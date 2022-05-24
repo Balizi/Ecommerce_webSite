@@ -1,0 +1,94 @@
+.con{
+    width: 77%;
+    margin-top:100px ;
+    float: right;
+}
+.contact-box{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 100px; */
+}
+
+
+.field{
+    width: 100%;
+    height: 50px;
+
+    margin: 20px auto 22px auto;
+
+    /* width: 100%; */
+	border: 2px solid rgba(0, 0, 0, 0);
+	outline: none;
+	background-color: rgba(230, 230, 230, 0.6);
+	padding: 0.5rem 1rem;
+	font-size: 1.1rem;
+	transition: .3s;
+    border-radius: 5px;
+}
+.field:focus{
+    border: 2px solid rgba(30,85,250,0.47);
+    background-color: #fff;
+}
+textarea{
+	min-height: 100px;
+}
+
+#text{
+    text-align: center;
+    color: #fff;
+}
+.div_fill{
+    position: relative;
+    margin: 10px auto 22px auto;
+    padding:10px ;
+    width: 100%;
+    background-color: #2499e3;
+    border-radius: 5px;
+}
+#btn_envira{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    
+}
+button{
+    float: right;
+    /* margin-top: 10px; */
+    background-color: chartreuse;
+    color: #fff;
+	font-size: 1.1rem;
+    border: none;
+    outline: none;
+	cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 7px;
+}
+
+@media (max-width: 768px)
+{
+    .sidebar .sidebar-brand h2 span:last-child,
+    .sidebar li a span:last-child{
+        display: none;
+    }
+    .main-content{
+        margin-left: 70px;
+    }
+     
+    .main-content header{
+        width: calc(100% - 70px);
+        left: 70px;
+    }
+    .con{
+        width: 100%;
+        margin: 50px auto 0 auto;
+    }
+    .contact-box{
+        width: 80%;
+    }
+}

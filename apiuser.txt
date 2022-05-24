@@ -1,0 +1,1 @@
+http://localhost/1FilRouge/apiuser/api/article/getarticles.php?categorie=Jeans&genre=Homme

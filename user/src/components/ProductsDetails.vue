@@ -24,13 +24,13 @@
                 <h6>Home / <span>{{dt.categorie}}</span></h6>
                 <h4>{{dt.titre}}</h4>
                 <h2 id="change">{{dt.prix}} MAD</h2>
-                <select name="" id="chose" onclick="Taille()" >
+                <select name="" id="chose" >
                     <option value="15" disabled selected>Select Size</option>
                     <option value="15">Small</option>
                     <option value="17">Large</option>
                     <option value="18">XLarge</option>
                 </select>
-                <input type="number" path="note" name="" min="1" value="1" id="val" onclick="Afficher()" >
+                <input type="number" path="note" name="" min="1" value="1" id="val" >
                 <button @click="add()" class="normal">Add To Cart</button>
                 <h4>Product Details</h4>
                 <span>{{dt.description}}</span>

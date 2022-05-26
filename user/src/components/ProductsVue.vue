@@ -4,21 +4,18 @@
     <h2>Homme - {{ this.$route.params.categorie }}</h2>
     <p>4302 Produits trouvés</p>
     <div class="product">
-        <div class="pro-contaier" >
-          <div class="pro" v-for="art in articles" :key="art.idArticle">
-            <router-link :to="'/productsdetails/'+art.idArticle" >
-              <img
-                :src="require(`../assets/img/product/homme/${art.image}`)"
-                :alt="image"
-              />
-              <div class="des">
-                <span>adidas</span>
-                <h5>{{ art.titre }}</h5>
-                <h4>{{ art.prix }} MAD</h4>
-              </div>
-            </router-link>
-          </div>
+      <div class="pro-contaier">
+        <div class="pro" v-for="art in articles" :key="art.idArticle">
+          <router-link :to="'/productsdetails/' + art.idArticle">
+            <img :src="require(`../assets/img/product/homme/${art.image}`)" />
+            <div class="des">
+              <span>adidas</span>
+              <h5>{{ art.titre }}</h5>
+              <h4>{{ art.prix }} MAD</h4>
+            </div>
+          </router-link>
         </div>
+      </div>
     </div>
   </section>
   <FooterVue />
@@ -69,13 +66,18 @@ export default {
           this.$route.params.categorie
       );
       this.articles = res.data;
-      console.log(res.data);
+      // console.log(res.data);
     },
   },
 };
 </script>
 <style>
-.product a {text-decoration: none;}
+.product a {
+  text-decoration: none;
+}
 
-.product a .pro-contaier{display: flex;justify-content: center;}
+.product a .pro-contaier {
+  display: flex;
+  justify-content: center;
+}
 </style>

@@ -7,10 +7,7 @@
       <div class="pro-contaier">
         <div class="pro" v-for="art in articles" :key="art.idArticle">
           <router-link :to="'/prodetailsfemme/' + art.idArticle">
-            <img
-              :src="require(`../assets/img/product/femme/${art.image}`)"
-              :alt="image"
-            />
+            <img :src="require(`../assets/img/product/femme/${art.image}`)" />
             <div class="des">
               <span>adidas</span>
               <h5>{{ art.titre }}</h5>

@@ -73,7 +73,7 @@
         <p>Summer Collection New Modern Design</p>
         <div class="pro-contaier">
           <div class="pro" v-for="dt in data" :key="dt.idArticle">
-            <img :src="require(`../assets/img/product/homme/${dt.image}`)" :alt="pic">
+            <img :src="require(`../assets/img/product/homme/${dt.image}`)" >
             <div class="des">
                 <span>adidas</span>
                 <h5>{{dt.titre}}</h5>
@@ -105,7 +105,7 @@ export default {
   },
   components: {
     HeaderVue,
-    FooterVue,
+    FooterVue
   },
   mounted(){
     this.Afficher();
@@ -115,7 +115,6 @@ export default {
     {
       let res=await axios.get('http://localhost/1FilRouge/apiuser/api/article/readtop.php');
       this.data=res.data.data;
-      console.log(this.data);
     }
   }
 }

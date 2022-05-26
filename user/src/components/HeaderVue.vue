@@ -54,13 +54,13 @@
             </li>
             <ul class="dropdown-contenten">
               <li style="color: blue">Garçon</li>
-              <li><a href="">Home1</a></li>
-              <li><a href="">Home2</a></li>
-              <li><a href="">Home3</a></li>
+              <li><router-link to="#">Home1</router-link></li>
+              <li><router-link to="#">Home2</router-link></li>
+              <li><router-link to="#">Home3</router-link></li>
               <li style="color: blue">Fille</li>
-              <li><a href="">Home1</a></li>
-              <li><a href="">Home2</a></li>
-              <li><a href="">Home3</a></li>
+              <li><router-link to="#">Home1</router-link></li>
+              <li><router-link to="#">Home2</router-link></li>
+              <li><router-link to="#">Home3</router-link></li>
             </ul>
           </div>
 
@@ -90,7 +90,10 @@ export default {
     }
   },
   mounted() {
-    this.count();
+    
+  },
+  created() {
+    // this.count();
   },
   methods: {
     count()

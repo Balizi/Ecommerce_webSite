@@ -7,37 +7,84 @@
                     <tr>
                         <td>REMOVE</td>
                         <td>Image</td>
-                        <td>Product</td>
-                        <td>Price</td>
+                        <td>Titre</td>
+                        <td>Prix</td>
                         <td>QUANTITY</td>
-                        <td>SUBTOTAL</td>
-                        <td>Acheter</td>
+                        <td>Categorie</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="dt in data" :key="dt.idArticle">
                         <td @click="removeItem(x)"> <a href="#"><i class="far fa-times-circle"></i></a></td>
                         <td><img :src="require(`./../assets/img/product/homme/${dt.image}`)" alt=""></td>
-                        <td>Cartoon Astronaut T-Shirts</td>
-                        <td>$19.99</td>
+                        <td>{{dt.titre}}</td>
+                        <td>{{dt.prix}} MAD</td>
                         <td><input type="number" min="1" name="" value="1" id=""></td>
-                        <td>20$</td>
-                        <td><button @click="By()">Acheter</button></td>
+                        <td>{{dt.categorie}}</td>
                     </tr>
                 </tbody>
             </table>
         </section>
+
+        
+
+        <section id="cart-add" class="section-p1">
+            <div id="cupon">
+                <h3>Apply Coupon</h3>
+                <div>
+                    <input type="text" placeholder="Enter Your Coupon">
+                    <button class="normal">Apply</button>
+                </div>
+            </div>
+            <div id="subtotal">
+                <h3>Cart Totale</h3>
+                <table>
+                    <tr>
+                        <td>Cart Totale</td>
+                        <td>{{this.s}} MAD</td>
+                    </tr>
+                    <tr>
+                        <td>Livraison</td>
+                        <td>Gratuite</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Totale</strong></td>
+                        <td><strong>{{this.s}} MAD</strong></td>
+                    </tr>
+                </table>
+                <button class="normal cl" @click="By()">FINALISER LA COMMANDE</button>
+            </div>
+        </section>
+
+
+
+        <div id="simpleModal" class="moda">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 style="text-transform: capitalize;">{{this.useInfo.nom}} {{this.useInfo.prenom}}</h2>
+                    <span id="closeBtn">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>Bonjoure</p>
+                    <p>Votre commande à être passer</p>
+                </div>
+            </div>
+        </div>
+        
         <FooterVue />
     </div>
 </template>
 <script>
 import HeaderVue from "./HeaderVue.vue";
 import FooterVue from "./FooterVue.vue";
+// import axios from "axios";
 export default {
   name: "PanierVue",
   data() {
     return {
       data: [],
+      useInfo:[],
+      s:0
     };
   },
   components: {
@@ -47,6 +94,7 @@ export default {
   mounted() {
     this.getData();
     this.saveData();
+    this.totale();
   },
   methods: {
     getData()
@@ -66,18 +114,99 @@ export default {
     },
     By()
     {
-        let produitepanier=JSON.parse(localStorage.getItem("user"));
+        let produitepanier=JSON.parse(localStorage.getItem("userInfo"));
+        this.useInfo=produitepanier;
+        
+        var modal=document.getElementById('simpleModal');
         if(!produitepanier)
         {
             this.$router.push({name:'LoginUser'})
         }else{
-            alert('yes');
+            // this.data.forEach(val=>{
+            //     axios.post("http://localhost/1FilRouge/apiuser/api/article/commander.php",{
+            //         idArticle:val.idArticle,
+            //         idClient:produitepanier.idClent
+            //     }).then((res)=>{
+            //         console.log(res.data.message);
+            //         // alert('try')
+            //     })
+            // })
+            // console.log(produitepanier.idClent);
+            modal.style.display='block';
         }
+
+        document.querySelector('#closeBtn').addEventListener('click',()=>{
+            modal.style.display='none';
+        })
+        
+    },
+    totale()
+    {
+        this.data.forEach(dt=>{
+            this.s+=dt.prix;
+        })
     }
   },
 };
 </script>
-<style >
+<style scoped>
+
+.button{
+    background: coral;
+    padding: 1em 2em;
+    color: #fff;
+    border: 0;
+    
+}
+
+.button:hover{background: #333;}
+
+.moda{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0,0,0.5);
+}
+
+.modal-content{
+    background-color: #f4f4f4;
+    margin: 20% auto;
+    width: 400px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0,0,0.2),
+                0 7px 20px 0 rgba(0, 0,0,0.17);
+}
+
+.modal-header h2{margin: 0;}
+
+.modal-header{background: #228896;padding: 15px;color: #fff;}
+
+.modal-body{padding: 10px 20px;}
+
+.modal-footer{
+    background: coral;
+    padding: 15px;
+    color: #fff;
+    /* text-align: center; */
+}
+
+.modal-footer h3{margin: 0;}
+
+#closeBtn{
+    /* color: #ccc; */
+    float: right;
+    font-size: 30px;
+    color: #fff;
+}
+
+#closeBtn:hover,#closeBtn:focus{color: #000;text-decoration: none;cursor: pointer;}
+
+
+
 /* Cart Page */
 .pannel{
     display: flex;
@@ -120,8 +249,7 @@ export default {
 
 #cart table td:nth-child(4),
 #cart table td:nth-child(5),
-#cart table td:nth-child(6),
-#cart table td:nth-child(7){
+#cart table td:nth-child(6){
     width: 150px;
     text-align: center;
 }
@@ -132,7 +260,7 @@ export default {
 }
 
 #cart table thead{
-    border: 1px solid #088178;
+    border: 1px solid #228896;
     border-left: none;
     border-right: none;
 }
@@ -156,5 +284,56 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+#cart-add{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#cupon{
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+#cupon h3,
+#subtotal h3{
+    padding-bottom: 15px;
+}
+
+#cupon input{
+    padding: 10px 20px;
+    outline: none;
+    width: 60%;
+    margin-right: 10px;
+    border: 1px solid #e2e9e1;
+}
+
+#cupon button,
+#subtotal button{
+    background-color: #228896;
+    color: #fff;
+    padding: 12px 20px;
+}
+
+#subtotal{
+    width: 50%;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9e1;
+    padding: 30px;
+}
+
+#subtotal table{
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#subtotal table td{
+    width: 50%;
+    border: 1px solid #e2e9e1;
+    padding: 10px;
+    font-size: 13px;
 }
 </style>

@@ -70,6 +70,10 @@
           <li class="nav-item">
             <a class="nav-link p-2 p-lg-3" href="#">Contact</a>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link p-2 p-lg-3" to="/login" v-if="!this.lg">S'identifier</router-link>
+            <router-link class="nav-link p-2 p-lg-3" to="#" @click="logout()" v-else>Déconnexion</router-link>
+          </li>
         </ul>
 
         <div class="search ps-3 pe-3 d-none d-lg-block">
@@ -86,11 +90,12 @@ export default {
   name: "HeaderVue",
   data() {
     return {
-      nb:null
+      nb:null,
+      lg:false
     }
   },
   mounted() {
-    
+    this.con();
   },
   created() {
     // this.count();
@@ -100,6 +105,18 @@ export default {
     {
       this.nb=JSON.parse(localStorage.getItem("produite")).length;
       console.log(this.nb);
+    },
+    con()
+    {
+      let produitepanier = JSON.parse(localStorage.getItem("userInfo"));
+      if (produitepanier) {
+        this.lg=true;
+      }
+    },
+    logout()
+    {
+      localStorage.removeItem('userInfo');
+      location.reload();
     }
   },
 };

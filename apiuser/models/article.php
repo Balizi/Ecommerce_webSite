@@ -11,6 +11,9 @@ class Article{
     public $categorie;
     public $genre;
 
+    public $idClient;
+
+
     public function __construct($db)
     {
         $this->conn=$db;
@@ -59,6 +62,21 @@ class Article{
         $tmp->execute();
         return $tmp->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function commander()
+    {
+        $req="INSERT INTO commande(idArticle, idClient) VALUES (:idArticle,:idClient)";
+        $tmp=$this->conn->prepare($req);
+
+        $tmp->bindParam(':idArticle',$this->idArticle);
+        $tmp->bindParam(':idClient',$this->idClient);
+        if($tmp->execute())
+        {
+            return true;
+        }
+        return false;
+    }
+
 }
 
 ?>

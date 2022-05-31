@@ -22,11 +22,11 @@
             >
           </div>
           <div class="inputBx">
-            <input type="submit" @click.prevent="login()" value="Sign In" />
+            <input type="submit" @click.prevent="login()" value="Se Connecter" />
           </div>
           <div class="inputBx">
             <p>
-              Don't have an account?<router-link to="/register">Sign up</router-link>
+              <router-link to="/register">Créer nouveau compte</router-link>
             </p>
           </div>
           <h3>Login with social media</h3>
@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     Controle() {
-      let produitepanier = JSON.parse(localStorage.getItem("user"));
+      let produitepanier = JSON.parse(localStorage.getItem("userInfo"));
       if (produitepanier) {
         this.$router.push({ name: "HomeVue" });
       }
@@ -78,12 +78,10 @@ export default {
         if(response.data.message === "success")
         {
           this.client=response.data.dt;
-          localStorage.setItem("user",JSON.stringify(this.client));
+          localStorage.setItem("userInfo",JSON.stringify(this.client));
           this.$router.push({ name: "HomeVue" });
         }
-        // console.log(response.data.message);
       })
-      // console.log(this.info);
     }
   },
 };

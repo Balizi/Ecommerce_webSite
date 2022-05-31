@@ -38,7 +38,9 @@
         </section>
     <FooterVue />
 </template>
+
 <script>
+
 import HeaderVue from "./HeaderVue.vue";
 import FooterVue from "./FooterVue.vue";
 import axios from 'axios';
@@ -68,7 +70,7 @@ export default {
     add()
     {
         let produitepanier=JSON.parse(localStorage.getItem("produite"));
-
+        
         if(produitepanier){
             produitepanier = [...produitepanier,...this.data];
             localStorage.setItem("produite",JSON.stringify(produitepanier));

@@ -37,7 +37,7 @@ class Client{
     {
         $req="SELECT * FROM client WHERE email=:email";
         $tmp=$this->conn->prepare($req);
-        $tmp=$this->conn->prepare($req);
+        // $tmp=$this->conn->prepare($req);
         $tmp->bindParam(':email',$this->email);
         if($tmp->execute())
         {
@@ -47,6 +47,3 @@ class Client{
     }
 
 }
-
-
-?>

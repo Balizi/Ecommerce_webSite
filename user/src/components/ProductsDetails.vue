@@ -5,17 +5,8 @@
                 <img :src="require(`../assets/img/product/homme/${dt.image}`)" width="100%" id="MainImg" alt="">
 
                 <div class="small-img-group">
-                    <div class="small-img-col">
-                        <img src="../assets/img/product/homme/f2.jpg" width="100%" class="small-img" alt="rr">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="../assets/img/product/homme/f3.jpg" width="100%" class="small-img" alt="ttt">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="../assets/img/product/homme/f4.jpg" width="100%" class="small-img" alt="ttt">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="../assets/img/product/homme/f4.jpg" width="100%" class="small-img" alt="ttt">
+                    <div class="small-img-col" v-for="dte in imgDet" :key="dte.id">
+                        <img :src="require(`../assets/img/product/homme/hdetails/${dte.image}`)" @click="Choose()" width="100%" class="small-img" alt="rr">
                     </div>
                 </div>
             </div>
@@ -50,6 +41,7 @@ export default {
   {
     return{
         data:[],
+        imgDet:[],
     }
   },
   components: {
@@ -58,14 +50,22 @@ export default {
   },
   mounted() {
     this.Details();
-    let arr =JSON.parse(localStorage.getItem('produite'));
-    console.log(arr);
+    this.imgDetails();
+    JSON.parse(localStorage.getItem('produite'));
+    // let arr =JSON.parse(localStorage.getItem('produite'));
+    // console.log(arr);
   },
   methods:{
     async Details()
     {
       let res=await axios.get('http://localhost/1FilRouge/apiuser/api/article/articleDetails.php?idArticle='+this.$route.params.idArticle);
       this.data=res.data;
+    },
+    async imgDetails()
+    {
+        let det= await axios.get('http://localhost/1FilRouge/apiuser/api/article/imgDetails.php?idArticle='+this.$route.params.idArticle);
+        console.log(det.data);
+        this.imgDet=det.data;
     },
     add()
     {
@@ -78,7 +78,28 @@ export default {
         else{
             localStorage.setItem("produite",JSON.stringify(this.data));
         }
+    },
+    Choose()
+    {
+        var MainImg=document.getElementById('MainImg');
+        var smallimg=document.getElementsByClassName('small-img');
+        smallimg[0].onclick=function(){
+            MainImg.src=smallimg[0].src;
+        }
+
+        smallimg[1].onclick=function(){
+            MainImg.src=smallimg[1].src;
+        }
+
+        smallimg[2].onclick=function(){
+            MainImg.src=smallimg[2].src;
+        }
+
+        smallimg[3].onclick=function(){
+            MainImg.src=smallimg[3].src;
+        }
     }
+
   }
 };
 </script>

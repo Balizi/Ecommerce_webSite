@@ -5,17 +5,8 @@
                 <img :src="require(`../assets/img/product/femme/${dt.image}`)" width="100%" id="MainImg" alt="">
 
                 <div class="small-img-group">
-                    <div class="small-img-col">
-                        <img src="../assets/img/product/homme/f2.jpg" width="100%" class="small-img" alt="rr">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="../assets/img/product/homme/f3.jpg" width="100%" class="small-img" alt="ttt">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="../assets/img/product/homme/f4.jpg" width="100%" class="small-img" alt="ttt">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="../assets/img/product/homme/f4.jpg" width="100%" class="small-img" alt="ttt">
+                    <div class="small-img-col" v-for="im in imgDet" :key="im.id">
+                        <img :src="require(`../assets/img/product/femme/fdetails/${im.image}`)" @click="Choose()" width="100%" class="small-img" alt="rr">
                     </div>
                 </div>
             </div>
@@ -31,7 +22,7 @@
                     <option value="18">XLarge</option>
                 </select>
                 <input type="number" path="note" name="" min="1" value="1" id="val" onclick="Afficher()" >
-                <button class="normal">Add To Cart</button>
+                <button class="normal" @click="add">Add To Cart</button>
                 <h4>Product Details</h4>
                 <span>{{dt.description}}</span>
             </div>
@@ -52,10 +43,12 @@ export default {
   data() {
     return {
         data:[],
+        imgDet:[],
     };
   },
   mounted() {
     this.Details();
+    this.imgDetails();
     console.log(this.$route.params.idArticle);
   },
   methods: {
@@ -67,6 +60,44 @@ export default {
       this.data = res.data;
       console.log(res.data);
     },
+    async imgDetails()
+    {
+        let det= await axios.get('http://localhost/1FilRouge/apiuser/api/article/imgDetails.php?idArticle='+this.$route.params.idArticle);
+        console.log(det.data);
+        this.imgDet=det.data;
+    },
+    add()
+    {
+        let produitepanier=JSON.parse(localStorage.getItem("produitef"));
+        
+        if(produitepanier){
+            produitepanier = [...produitepanier,...this.data];
+            localStorage.setItem("produitef",JSON.stringify(produitepanier));
+        }
+        else{
+            localStorage.setItem("produitef",JSON.stringify(this.data));
+        }
+    },
+    Choose()
+    {
+        var MainImg=document.getElementById('MainImg');
+        var smallimg=document.getElementsByClassName('small-img');
+        smallimg[0].onclick=function(){
+            MainImg.src=smallimg[0].src;
+        }
+
+        smallimg[1].onclick=function(){
+            MainImg.src=smallimg[1].src;
+        }
+
+        smallimg[2].onclick=function(){
+            MainImg.src=smallimg[2].src;
+        }
+
+        smallimg[3].onclick=function(){
+            MainImg.src=smallimg[3].src;
+        }
+    }
   },
 };
 </script>

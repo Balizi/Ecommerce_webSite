@@ -63,6 +63,16 @@ class Article{
         return $tmp->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function imgDetails()
+    {
+        $req="SELECT i.image FROM imgdetails i INNER JOIN article a on a.idArticle=i.idArticle WHERE a.idArticle=?";
+        $tmp=$this->conn->prepare($req);
+        $tmp->bindParam(1,$this->idArticle);
+        $tmp->execute();
+        return $tmp->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     public function commander()
     {
         $req="INSERT INTO commande(idArticle, idClient) VALUES (:idArticle,:idClient)";

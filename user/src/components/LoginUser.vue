@@ -10,17 +10,17 @@
         <form>
           <div class="inputBx">
             <span>Email</span>
-            <input type="email" v-model="this.info.email" placeholder="Entre votre email" required />
+            <input type="email" v-model="this.info.email" placeholder="Entrer votre email" required />
           </div>
           <div class="inputBx">
             <span>Mot de passe</span>
             <input type="password" v-model="this.info.password" placeholder="Entre votre mot de passe" required />
           </div>
-          <div class="remember">
+          <!-- <div class="remember">
             <label for="id"
               ><input type="checkbox" name="" id="id" />Remember me</label
             >
-          </div>
+          </div> -->
           <div class="inputBx">
             <input type="submit" @click.prevent="login()" value="Se Connecter" />
           </div>
@@ -202,9 +202,7 @@ section .contentBx .formBx .inputBx p {
   color: #607d8b;
 }
 
-section .contentBx .formBx .inputBx p a {
-  color: #088178;
-}
+section .contentBx .formBx .inputBx p a {color: #088178;}
 
 section .contentBx .formBx h3 {
   color: #607d8b;

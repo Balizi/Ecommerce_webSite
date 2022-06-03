@@ -24,7 +24,7 @@
   </section>
 
   <section id="summer">
-    <div class="head">Summer Collection New Modern Design</div>
+    <div class="head">Collection d'été Nouveau design moderne</div>
     <div class="pro-contaier">
       <div class="pro">
         <img src="./../assets/img/products/f1.jpg" alt="" />
@@ -64,25 +64,25 @@
 
     <section id="banner" class="section-m1">
         <h4>Repair Services</h4>
-        <h2>Up to <span>70% Off</span> - All t-shirts & Accesssories</h2>
+        <h2>Bienvenue sur <span>Bondi Theme</span> la boutique de vente et d'achat en ligne N°1 au Maroc !</h2>
         <button class="normal">Explore More</button>
     </section>
 
     <section id="product1" class="section-p1">
-        <h2>New Arrivals</h2>
-        <p>Summer Collection New Modern Design</p>
+        <h2>Nouvelles Arrivées</h2>
+        <p>Collection d'été Nouveau design moderne</p>
         <div class="pro-contaier">
           <div class="pro" v-for="dt in data" :key="dt.idArticle">
             <img :src="require(`../assets/img/product/homme/${dt.image}`)" >
             <div class="des">
-                <span>adidas</span>
+                <!-- <span>adidas</span> -->
                 <h5>{{dt.titre}}</h5>
-                <div class="star">
+                <!-- <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
-                </div>
+                </div> -->
                 <h4>{{dt.prix }} MAD</h4>
             </div>
           </div>

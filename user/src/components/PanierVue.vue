@@ -15,8 +15,16 @@
                 </thead>
                 <tbody>
                     <tr v-for="dt in data" :key="dt.idArticle">
-                        <td @click="removeItem(x)"> <a href="#"><i class="far fa-times-circle"></i></a></td>
+                        <td @click="removeItem(dt)"> <a href="#"><i class="far fa-times-circle"></i></a></td>
                         <td><img :src="require(`./../assets/img/product/homme/${dt.image}`)" alt=""></td>
+                        <td>{{dt.titre}}</td>
+                        <td>{{dt.prix}} MAD</td>
+                        <td><input type="number" min="1" name="" value="1" id=""></td>
+                        <td>{{dt.categorie}}</td>
+                    </tr>
+                    <tr v-for="dt in dataf" :key="dt.idArticle">
+                        <td @click="removeItemf(dt)"> <a href="#"><i class="far fa-times-circle"></i></a></td>
+                        <td><img :src="require(`./../assets/img/product/femme/${dt.image}`)" alt=""></td>
                         <td>{{dt.titre}}</td>
                         <td>{{dt.prix}} MAD</td>
                         <td><input type="number" min="1" name="" value="1" id=""></td>
@@ -94,6 +102,7 @@ export default {
   mounted() {
     this.getData();
     this.saveData();
+    this.getDataf();
     this.totale();
   },
   methods: {
@@ -101,10 +110,19 @@ export default {
     {
         this.data=JSON.parse(localStorage.getItem('produite'));
     },
+    getDataf()
+    {
+        this.dataf=JSON.parse(localStorage.getItem('produitef'));
+    },
     saveData(data)
     {
         data=this.data;
         localStorage.setItem('produite',JSON.stringify(data));
+    },
+    saveDataf(data)
+    {
+        data=this.dataf;
+        localStorage.setItem('produitef',JSON.stringify(data));
     },
     removeItem(x)
     {
@@ -112,6 +130,13 @@ export default {
         this.data.splice(index,1);
         this.saveData(x);
     },
+    removeItemf(x)
+    {
+        let index=this.dataf.indexOf(x);
+        this.dataf.splice(index,1);
+        this.saveDataf(x);
+    },
+    
     By()
     {
         let produitepanier=JSON.parse(localStorage.getItem("userInfo"));

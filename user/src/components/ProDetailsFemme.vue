@@ -10,7 +10,7 @@
                     </div>
                 </div>
             </div>
-
+        
             <div class="single-pro-details">
                 <h6>Femme / <span>{{dt.categorie}}</span></h6>
                 <h4>{{dt.titre}}</h4>

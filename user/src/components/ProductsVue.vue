@@ -57,6 +57,7 @@ export default {
         genre: null,
       },
       articles: [],
+      layout:"homme"
     };
   },
   methods: {

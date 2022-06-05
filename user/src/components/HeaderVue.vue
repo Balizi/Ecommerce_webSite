@@ -54,7 +54,7 @@
             </li>
             <ul class="dropdown-contenten">
               <li style="color: blue">Garçon</li>
-              <li><router-link to="#">Home1</router-link></li>
+              <li><router-link to="/enfants/T-shirt/enfant">T-shirt</router-link></li>
               <li><router-link to="#">Home2</router-link></li>
               <li><router-link to="#">Home3</router-link></li>
               <li style="color: blue">Fille</li>
@@ -64,9 +64,9 @@
             </ul>
           </div>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link p-2 p-lg-3" href="#">PROMOTINS</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link p-2 p-lg-3" href="#">Contact</a>
           </li>
@@ -78,7 +78,7 @@
 
         <div class="search ps-3 pe-3 d-none d-lg-block">
           <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-          <router-link to="/login"><i class="fa-solid fa-user"></i></router-link>
+          <!-- <router-link to="/login"><i class="fa-solid fa-user"></i></router-link> -->
           <router-link to="/paniervue">  <i class="fa-solid fa-cart-shopping"></i><span v-if="this.nb>0">{{this.nb}}</span></router-link>
         </div>
       </div>

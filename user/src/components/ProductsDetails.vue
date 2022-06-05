@@ -2,26 +2,29 @@
     <HeaderVue />
         <section id="prodetails" class="section-p1" v-for="dt in data" :key="dt.idArticle">
             <div class="single-pro-image">
-                <img :src="require(`../assets/img/product/homme/${dt.image}`)" width="100%" id="MainImg" alt="">
+                <img v-if="dt.genre === 'Homme'" :src="require(`../assets/img/product/homme/${dt.image}`)" width="100%" id="MainImg" alt="">
+                <img v-if="dt.genre === 'femme'" :src="require(`../assets/img/product/femme/${dt.image}`)" width="100%" id="MainImg" alt="">
 
                 <div class="small-img-group">
                     <div class="small-img-col" v-for="dte in imgDet" :key="dte.id">
-                        <img :src="require(`../assets/img/product/homme/hdetails/${dte.image}`)" @click="Choose()" width="100%" class="small-img" alt="rr">
+                        <img v-if="dte.genre == 'Homme'" :src="require(`../assets/img/product/homme/hdetails/${dte.image}`)" @click="Choose()" width="100%" class="small-img" alt="rr">
+                        <img v-if="dte.genre == 'femme'" :src="require(`../assets/img/product/femme/fdetails/${dte.image}`)" @click="Choose()" width="100%" class="small-img" alt="rr">
+                        <!-- <h4 v-if="dt.genre == 'Homme'">{{dt.image}}</h4> -->
                     </div>
                 </div>
             </div>
 
             <div class="single-pro-details">
-                <h6>Home / <span>{{dt.categorie}}</span></h6>
+                <h6>{{dt.genre}} / <span>{{dt.categorie}}</span></h6>
                 <h4>{{dt.titre}}</h4>
                 <h2 id="change">{{dt.prix}} MAD</h2>
-                <select name="" id="chose" >
+                <!-- <select name="" id="chose" >
                     <option value="15" disabled selected>Select Size</option>
                     <option value="15">Small</option>
                     <option value="17">Large</option>
                     <option value="18">XLarge</option>
-                </select>
-                <input type="number" path="note" name="" min="1" value="1" id="val" >
+                </select> -->
+                <input type="number" path="note" name="" min="1" v-model="data[0].qte" id="val" >
                 <button @click="add()" class="normal">Add To Cart</button>
                 <h4>Product Details</h4>
                 <span>{{dt.description}}</span>
@@ -59,6 +62,7 @@ export default {
     async Details()
     {
       let res=await axios.get('http://localhost/1FilRouge/apiuser/api/article/articleDetails.php?idArticle='+this.$route.params.idArticle);
+      console.log(res.data);
       this.data=res.data;
     },
     async imgDetails()
@@ -69,6 +73,7 @@ export default {
     },
     add()
     {
+        console.log(this.data);
         let produitepanier=JSON.parse(localStorage.getItem("produite"));
         
         if(produitepanier){

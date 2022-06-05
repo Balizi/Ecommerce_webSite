@@ -5,7 +5,7 @@
             <table width="100%">
                 <thead>
                     <tr>
-                        <td>REMOVE</td>
+                        <td>Supprimer</td>
                         <td>Image</td>
                         <td>Titre</td>
                         <td>Prix</td>
@@ -19,7 +19,7 @@
                         <td><img :src="require(`./../assets/img/product/homme/${dt.image}`)" alt=""></td>
                         <td>{{dt.titre}}</td>
                         <td>{{dt.prix}} MAD</td>
-                        <td><input type="number" min="1" name="" value="1" id=""></td>
+                        <td><input type="number" min="1" name="" :value="dt.qte" id=""></td>
                         <td>{{dt.categorie}}</td>
                     </tr>
                     <tr v-for="dt in dataf" :key="dt.idArticle">
@@ -27,7 +27,7 @@
                         <td><img :src="require(`./../assets/img/product/femme/${dt.image}`)" alt=""></td>
                         <td>{{dt.titre}}</td>
                         <td>{{dt.prix}} MAD</td>
-                        <td><input type="number" min="1" name="" value="1" id=""></td>
+                        <td><input type="number" min="1" name="" :value="dt.qte" id=""></td>
                         <td>{{dt.categorie}}</td>
                     </tr>
                 </tbody>
@@ -37,14 +37,7 @@
         
 
         <section id="cart-add" class="section-p1">
-            <div id="cupon">
-                <h3>Apply Coupon</h3>
-                <div>
-                    <input type="text" placeholder="Enter Your Coupon">
-                    <button class="normal">Apply</button>
-                </div>
-            </div>
-            <div id="subtotal">
+            <div id="subtotal" >
                 <h3>Cart Totale</h3>
                 <table>
                     <tr>
@@ -92,7 +85,8 @@ export default {
     return {
       data: [],
       useInfo:[],
-      s:0
+      s:0,
+      f:0
     };
   },
   components: {
@@ -170,6 +164,10 @@ export default {
         this.data.forEach(dt=>{
             this.s+=dt.prix;
         })
+        this.dataf.forEach(dt=>{
+            this.s+=dt.prix;
+        })
+        // this.s+=this.f;
     }
   },
 };

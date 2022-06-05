@@ -52,6 +52,16 @@ class Article{
         $tmp->execute();
         return $tmp->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getArticlesEnf()
+    {
+        $req="SELECT * FROM `article` WHERE categorie = ? and genre = ?";
+        $tmp=$this->conn->prepare($req);
+        $tmp->bindParam(1,$this->categorie);
+        $tmp->bindParam(2,$this->genre);
+        $tmp->execute();
+        return $tmp->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 
     public function proDetails()
@@ -65,7 +75,7 @@ class Article{
 
     public function imgDetails()
     {
-        $req="SELECT i.image FROM imgdetails i INNER JOIN article a on a.idArticle=i.idArticle WHERE a.idArticle=?";
+        $req="SELECT a.genre, i.image FROM imgdetails i INNER JOIN article a on a.idArticle=i.idArticle WHERE a.idArticle=?";
         $tmp=$this->conn->prepare($req);
         $tmp->bindParam(1,$this->idArticle);
         $tmp->execute();

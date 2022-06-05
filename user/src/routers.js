@@ -6,6 +6,7 @@ import ProDetailsFemme from './components/ProDetailsFemme.vue'
 import PanierVue from './components/PanierVue.vue'
 import LoginUser from './components/LoginUser.vue'
 import RegisterVue from './components/RegisterVue.vue'
+import ProductsEnf from './components/ProductsEnf.vue'
 
 import { createRouter,createWebHistory } from 'vue-router'
 
@@ -49,6 +50,11 @@ const routes=[
         name:'RegisterVue',
         component:RegisterVue,
         path:'/register'
+    },
+    {
+        name:'ProductsEnf',
+        component:ProductsEnf,
+        path:'/enfants/:categorie/:genre'
     }
 ]
 

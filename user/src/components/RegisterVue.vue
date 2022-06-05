@@ -2,7 +2,7 @@
   <HeaderVue />
   <div class="bd">
     <div class="contai">
-      <div class="title">Register</div>
+      <div class="title">S’inscrire</div>
       <form method="post">
         <div class="user-details">
           <div class="input-box">
@@ -54,7 +54,7 @@
             <span class="details">Confirm Password</span>
             <input
               type="password"
-              v-model="this.client.password"
+              v-model="this.client.passwor"
               placeholder="Confirm votre mot de passe"
               required
             />
@@ -92,7 +92,7 @@
           <input
             type="submit"
             v-on:click.prevent="register()"
-            value="Register"
+            value="S’inscrire"
           />
         </div>
         <router-link to="/login">Ce conecter</router-link>

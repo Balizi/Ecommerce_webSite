@@ -8,7 +8,7 @@
     <button>Shop Now</button>
   </section>
 
-  <section id="boutique">
+  <!-- <section id="boutique">
     <div class="head">Boutiques Officielles</div>
     <div class="img">
       <div class="str">
@@ -21,7 +21,7 @@
         <img src="./../assets/img/boutique/30t_260x144.png" alt="" />
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section id="summer">
     <div class="head">Collection d'été Nouveau design moderne</div>
@@ -101,6 +101,16 @@ export default {
   {
     return {
       data:[],
+      da:{
+        titre:null,
+        categorie:null,
+        description:null,
+        genre:null,
+        idArticle:null,
+        image:null,
+        prix:null,
+        qte:null
+      }
     }
   },
   components: {

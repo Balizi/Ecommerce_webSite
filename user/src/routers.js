@@ -19,7 +19,7 @@ const routes=[
     {
         name:'ProductsVue',
         component:ProductsVue,
-        path:'/products/:categorie'
+        path:'/products/:categorie/:genre'
     },
     {
         name:'ProductFemme',

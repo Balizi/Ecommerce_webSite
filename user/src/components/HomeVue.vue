@@ -68,25 +68,33 @@
         <button class="normal">Explore More</button>
     </section>
 
-    <section id="product1" class="section-p1">
+    <section id="product1"   class="section-p1">
         <h2>Nouvelles Arrivées</h2>
         <p>Collection d'été Nouveau design moderne</p>
         <div class="pro-contaier">
-          <div class="pro" v-for="dt in data" :key="dt.idArticle">
-            <img :src="require(`../assets/img/product/homme/${dt.image}`)" >
-            <div class="des">
-                <!-- <span>adidas</span> -->
-                <h5>{{dt.titre}}</h5>
-                <!-- <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div> -->
-                <h4>{{dt.prix }} MAD</h4>
-            </div>
+          <div class="pro" v-for="dt in dataPaginate" :key="dt.idArticle">
+            <router-link :to="'/productsdetails/' + dt.idArticle">
+              <img :src="require(`../assets/img/product/homme/${dt.image}`)" >
+              <div class="des">
+                  <!-- <span>adidas</span> -->
+                  <h5>{{dt.titre}}</h5>
+                  <!-- <div class="star">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                  </div> -->
+                  <h4>{{dt.prix }} MAD</h4>
+              </div>
+            </router-link>
           </div>
         </div>
+    </section>
+
+    <section id="pagination" class="section-p1">
+      <a href="#product1" @click="getFirstPagi()">First</a>
+      <a href="#product1" v-for="page in totalPaginate()" :key="page" @click="getDataPaginate(page)">{{page}}</a>
+      <a href="#product1" @click="getLastPagi()">Last</a>
     </section>
 
   <FooterVue />
@@ -110,7 +118,10 @@ export default {
         image:null,
         prix:null,
         qte:null
-      }
+      },
+      elementPagination:6,
+      dataPaginate:[],
+      currentPaginate: 1
     }
   },
   components: {
@@ -124,12 +135,52 @@ export default {
     async Afficher()
     {
       let res=await axios.get('http://localhost/1FilRouge/apiuser/api/article/readtop.php');
+      let ini=(1 * this.elementPagination) - this.elementPagination;
+      let fin=(1 * this.elementPagination);
+      this.dataPaginate=res.data.data.slice(ini,fin);
       this.data=res.data.data;
+    },
+    totalPaginate()
+    {
+      return Math.ceil(this.data.length / this.elementPagination);
+    },
+    getDataPaginate(Current)
+    {
+      this.currentPaginate=Current;
+      let ini=(Current * this.elementPagination) - this.elementPagination;
+      let fin=(Current * this.elementPagination);
+      this.dataPaginate=this.data.slice(ini,fin);
+    },
+    getFirstPagi()
+    {
+      this.getDataPaginate(1);
+    },
+    getLastPagi()
+    {
+      this.getDataPaginate(this.totalPaginate());
     }
   }
 }
 </script>
 <style >
+#pagination{
+  text-align: center;
+}
+
+#pagination a{
+  text-decoration: none;
+  background-color: #A9C52F;
+  padding: 15px 20px;
+  margin: 0 5px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 600;
+}
+
+#pagination a i{
+  font-size: 16px;
+  font-weight: 600;
+}
 #hero {
   background-image: url("./../assets/img/home_img1.jpg");
   height: 95vh;
@@ -141,6 +192,10 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+}
+
+a{
+  text-decoration: none;
 }
 
 #hero h4 {

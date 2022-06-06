@@ -2,20 +2,22 @@
     <HeaderVue />
         <section id="prodetails" class="section-p1" v-for="dt in data" :key="dt.idArticle">
             <div class="single-pro-image">
-                <img v-if="dt.genre === 'Homme'" :src="require(`../assets/img/product/homme/${dt.image}`)" width="100%" id="MainImg" alt="">
-                <img v-if="dt.genre === 'femme'" :src="require(`../assets/img/product/femme/${dt.image}`)" width="100%" id="MainImg" alt="">
+                <img v-if="dt.genre == 'Homme'" :src="require(`../assets/img/product/homme/${dt.image}`)" width="100%" id="MainImg" alt="">
+                <img v-if="dt.genre == 'femme'" :src="require(`../assets/img/product/femme/${dt.image}`)" width="100%" id="MainImg" alt="">
+                <img v-if="dt.genre == 'enfant'" :src="require(`../assets/img/product/enfant/${dt.image}`)" width="100%" id="MainImg" alt="">
 
                 <div class="small-img-group">
                     <div class="small-img-col" v-for="dte in imgDet" :key="dte.id">
                         <img v-if="dte.genre == 'Homme'" :src="require(`../assets/img/product/homme/hdetails/${dte.image}`)" @click="Choose()" width="100%" class="small-img" alt="rr">
                         <img v-if="dte.genre == 'femme'" :src="require(`../assets/img/product/femme/fdetails/${dte.image}`)" @click="Choose()" width="100%" class="small-img" alt="rr">
+                        <img v-if="dte.genre == 'enfant'" :src="require(`../assets/img/product/enfant/edetails/${dte.image}`)" @click="Choose()" width="100%" class="small-img" alt="rr">
                         <!-- <h4 v-if="dt.genre == 'Homme'">{{dt.image}}</h4> -->
                     </div>
                 </div>
             </div>
 
             <div class="single-pro-details">
-                <h6>{{dt.genre}} / <span>{{dt.categorie}}</span></h6>
+                <h6 style="text-transform: capitalize;">{{dt.genre}} / <span>{{dt.categorie}}</span></h6>
                 <h4>{{dt.titre}}</h4>
                 <h2 id="change">{{dt.prix}} MAD</h2>
                 <!-- <select name="" id="chose" >
@@ -45,6 +47,7 @@ export default {
     return{
         data:[],
         imgDet:[],
+        check:false,
     }
   },
   components: {
@@ -73,15 +76,23 @@ export default {
     },
     add()
     {
-        console.log(this.data);
+        console.log(this.data[0].idArticle);
         let produitepanier=JSON.parse(localStorage.getItem("produite"));
+
+        produitepanier.forEach(element => {
+            if(this.data[0].idArticle == element.idArticle)
+                return this.check =true;
+        });
         
-        if(produitepanier){
-            produitepanier = [...produitepanier,...this.data];
-            localStorage.setItem("produite",JSON.stringify(produitepanier));
-        }
-        else{
-            localStorage.setItem("produite",JSON.stringify(this.data));
+        if(!this.check)
+        {
+            if(produitepanier){
+                produitepanier = [...produitepanier,...this.data];
+                localStorage.setItem("produite",JSON.stringify(produitepanier));
+            }
+            else{
+                localStorage.setItem("produite",JSON.stringify(this.data));
+            }
         }
     },
     Choose()

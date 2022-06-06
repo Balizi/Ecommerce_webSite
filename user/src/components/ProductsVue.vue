@@ -1,13 +1,15 @@
 <template>
   <HeaderVue />
   <section id="product1" class="section-p1">
-    <h2>Homme - {{ this.$route.params.categorie }}</h2>
+    <h2 style="text-transform: capitalize;">{{this.$route.params.genre}} - {{ this.$route.params.categorie }}</h2>
     <p>4302 Produits trouvés</p>
     <div class="product">
       <div class="pro-contaier">
-        <div class="pro" v-for="art in articles" :key="art.idArticle">
+        <div class="pro" v-for="art in dataPaginate" :key="art.idArticle">
           <router-link :to="'/productsdetails/' + art.idArticle">
-            <img :src="require(`../assets/img/product/homme/${art.image}`)" />
+            <img v-if="art.genre == 'Homme'" :src="require(`../assets/img/product/homme/${art.image}`)" />
+            <img v-if="art.genre == 'femme'" :src="require(`../assets/img/product/femme/${art.image}`)" />
+            <img v-if="art.genre == 'enfant'" :src="require(`../assets/img/product/enfant/${art.image}`)" />
             <div class="des">
               <span>adidas</span>
               <h5>{{ art.titre }}</h5>
@@ -17,6 +19,12 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <section id="pagination" class="section-p1">
+    <a href="#" @click="getFirstPagi()">First</a>
+    <a href="#" v-for="page in totalPaginate()" :key="page" @click="getDataPaginate(page)">{{page}}</a>
+    <a href="#" @click="getLastPagi()">Last</a>
   </section>
   <FooterVue />
 </template>
@@ -57,18 +65,38 @@ export default {
         genre: null,
       },
       articles: [],
-      layout:"homme"
+      layout:"homme",
+      elementPagination:6,
+      dataPaginate:[],
+      currentPaginate: 1
     };
   },
   methods: {
     async Products() {
-      let res = await axios.get(
-        "http://localhost/1FilRouge/apiuser/api/article/getarticles.php?categorie=" +
-          this.$route.params.categorie
-      );
+      // let res = await axios.get(
+      //   "http://localhost/1FilRouge/apiuser/api/article/getarticles.php?categorie=" +
+      //     this.$route.params.categorie
+      // );
+      let res=await axios.get('http://localhost/1FilRouge/apiuser/api/article/getArticleCategorie.php?categorie='+this.$route.params.categorie+'&genre='+this.$route.params.genre);
+      let ini=(1 * this.elementPagination) - this.elementPagination;
+      let fin=(1 * this.elementPagination);
+      this.dataPaginate=res.data.slice(ini,fin);
       this.articles = res.data;
-      // console.log(res.data);
     },
+    totalPaginate()
+    {
+      return Math.ceil(this.articles.length / this.elementPagination);
+    },
+    getDataPaginate(Current)
+    {
+      this.currentPaginate=Current;
+      let ini=(Current * this.elementPagination) - this.elementPagination;
+      let fin=(Current * this.elementPagination);
+      console.log(this.articles.slice(ini,fin));
+      // console.log(ini);
+      // console.log(fin);
+      this.dataPaginate=this.articles.slice(ini,fin);
+    }
   },
 };
 </script>

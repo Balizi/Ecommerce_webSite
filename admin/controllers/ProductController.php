@@ -32,4 +32,19 @@ class ProductController{
         }
     }
 
+    public function deleteVoyage()
+    {
+        if(isset($_POST['id']))
+        {
+            $data['id']=$_POST['idd'];
+            // var_dump($data);
+            // die();
+            $res=Product::deletePro($data);
+            if($res === 'ok')
+            {
+                echo "<script>alert('yes')</script>";
+            }
+        }
+    }
+
 }

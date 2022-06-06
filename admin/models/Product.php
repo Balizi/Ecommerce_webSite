@@ -29,4 +29,21 @@ class Product
         $tmp->execute();
         header("Location:index.php");
     }
+
+    public static function deletePro($data)
+    {
+        $id=$data['id'];
+        try{
+            $req="DELETE from article WHERE idArticle=:id";
+            $stmt=DB::connexion()->prepare($req);
+            $stmt->execute(array(":id"=>$id));
+            if($stmt->execute())
+            {
+                return 'OK';
+            }
+
+        }catch(PDOException $ex){
+            echo $ex->getMessage();
+        }
+    }
 }

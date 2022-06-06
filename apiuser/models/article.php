@@ -35,6 +35,16 @@ class Article{
         return $tmp;
     }
 
+    public function getArticleByCatego()
+    {
+        $req="SELECT * FROM `article` WHERE categorie = ? and genre = ?";
+        $tmp=$this->conn->prepare($req);
+        $tmp->bindParam(1,$this->categorie);
+        $tmp->bindParam(2,$this->genre);
+        $tmp->execute();
+        return $tmp->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getArticlesHomme()
     {
         $req="SELECT * FROM `article` WHERE categorie = ? and genre = 'Homme'";

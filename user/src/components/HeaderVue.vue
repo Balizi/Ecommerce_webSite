@@ -25,12 +25,12 @@
             </li>
             <ul class="dropdown-content">
               <li style="color: blue">Vetments</li>
-              <li><router-link @click="a" to="/products/chemises">Chemises</router-link></li>
-              <li><router-link to="/products/tricots">Tricots</router-link></li>
-              <li><router-link to="/products/T-shirt">T-Shirts</router-link></li>
-              <li><router-link to="/products/Jeans">Jeans</router-link></li>
-              <li><router-link to="/products/pantalons">Pantalons</router-link></li>
-              <li><router-link to="/products/shorts">Shorts</router-link></li>
+              <li><router-link @click="a" to="/products/chemises/Homme">Chemises</router-link></li>
+              <li><router-link to="/products/tricots/Homme">Tricots</router-link></li>
+              <li><router-link to="/products/T-shirt/Homme">T-Shirts</router-link></li>
+              <li><router-link to="/products/Jeans/Homme">Jeans</router-link></li>
+              <li><router-link to="/products/pantalons/Homme">Pantalons</router-link></li>
+              <li><router-link to="/products/shorts/Homme">Shorts</router-link></li>
             </ul>
           </div>
 
@@ -40,11 +40,11 @@
             </li>
             <ul class="dropdown-contentf">
               <li style="color: blue">Vetments</li>
-              <li><router-link to="/productsf/chemise">Chemisiers</router-link></li>
-              <li><router-link to="/productsf/maternite">Maternité</router-link></li>
-              <li><router-link to="/productsf/tricots">Tricots</router-link></li>
-              <li><router-link to="/productsf/Tuniques">Tuniques</router-link></li>
-              <li><router-link to="/productsf/robes">Robes</router-link></li>
+              <li><router-link to="/products/chemise/femme">Chemisiers</router-link></li>
+              <li><router-link to="/products/maternite/femme">Maternité</router-link></li>
+              <li><router-link to="/products/tricots/femme">Tricots</router-link></li>
+              <li><router-link to="/products/Tuniques/femme">Tuniques</router-link></li>
+              <li><router-link to="/products/robes/femme">Robes</router-link></li>
             </ul>
           </div>
 
@@ -54,13 +54,13 @@
             </li>
             <ul class="dropdown-contenten">
               <li style="color: blue">Garçon</li>
-              <li><router-link to="/enfants/T-shirt/enfant">T-shirt</router-link></li>
-              <li><router-link to="#">Home2</router-link></li>
-              <li><router-link to="#">Home3</router-link></li>
+              <li><router-link to="/products/T-shirt/enfant">T-shirt</router-link></li>
+              <li><router-link to="/products/Chemise/enfant/">Chemise</router-link></li>
+              <li><router-link to="/products/Jeans/enfant/">Jeans</router-link></li>
               <li style="color: blue">Fille</li>
-              <li><router-link to="#">Home1</router-link></li>
-              <li><router-link to="#">Home2</router-link></li>
-              <li><router-link to="#">Home3</router-link></li>
+              <li><router-link to="#">Robes</router-link></li>
+              <li><router-link to="#">Jupes</router-link></li>
+              <li><router-link to="#">Jeans</router-link></li>
             </ul>
           </div>
 

@@ -15,16 +15,11 @@
                 </thead>
                 <tbody>
                     <tr v-for="dt in data" :key="dt.idArticle">
-                        <td @click="removeItem(dt)"> <a href="#"><i class="far fa-times-circle"></i></a></td>
-                        <td><img :src="require(`./../assets/img/product/homme/${dt.image}`)" alt=""></td>
-                        <td>{{dt.titre}}</td>
-                        <td>{{dt.prix}} MAD</td>
-                        <td><input type="number" min="1" name="" :value="dt.qte" id=""></td>
-                        <td>{{dt.categorie}}</td>
-                    </tr>
-                    <tr v-for="dt in dataf" :key="dt.idArticle">
-                        <td @click="removeItemf(dt)"> <a href="#"><i class="far fa-times-circle"></i></a></td>
-                        <td><img :src="require(`./../assets/img/product/femme/${dt.image}`)" alt=""></td>
+                        <!-- <td @click="removeItem(dt)"> <a href="#"><i class="far fa-times-circle"></i></a></td> -->
+                        <td @click="removeItem(dt)"> <a href="#">x</a></td>
+                        <td v-if="dt.genre == 'Homme'"><img :src="require(`./../assets/img/product/homme/${dt.image}`)" alt=""></td>
+                        <td v-if="dt.genre == 'femme'"><img :src="require(`./../assets/img/product/femme/${dt.image}`)" alt=""></td>
+                        <td v-if="dt.genre == 'enfant'"><img :src="require(`../assets/img/product/enfant/${dt.image}`)" alt=""></td>
                         <td>{{dt.titre}}</td>
                         <td>{{dt.prix}} MAD</td>
                         <td><input type="number" min="1" name="" :value="dt.qte" id=""></td>
@@ -162,12 +157,8 @@ export default {
     totale()
     {
         this.data.forEach(dt=>{
-            this.s+=dt.prix;
+            this.s+=(dt.prix*dt.qte);
         })
-        this.dataf.forEach(dt=>{
-            this.s+=dt.prix;
-        })
-        // this.s+=this.f;
     }
   },
 };

@@ -5,7 +5,7 @@
 
     $home=new HomeController();
 
-    $pages=['home','add','delete','update','listfemme','login','register','logout'];
+    $pages=['home','add','deleteProduct','update','listfemme','login','register','logout','index'];
 
     if(isset($_SESSION['connecter']) && $_SESSION['connecter'] === true)
     {
@@ -19,7 +19,7 @@
                 include('views/includes/404.php');
             }
         }else{
-            $home->index('home');
+            $home->index('index');
         }
 
         require_once './views/includes/footer.php';

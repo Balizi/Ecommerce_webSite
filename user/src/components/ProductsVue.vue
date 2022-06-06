@@ -2,7 +2,7 @@
   <HeaderVue />
   <section id="product1" class="section-p1">
     <h2 style="text-transform: capitalize;">{{this.$route.params.genre}} - {{ this.$route.params.categorie }}</h2>
-    <p>4302 Produits trouvés</p>
+    <p>{{this.articles.length}} Produits trouvés</p>
     <div class="product">
       <div class="pro-contaier">
         <div class="pro" v-for="art in dataPaginate" :key="art.idArticle">
@@ -23,7 +23,7 @@
 
   <section id="pagination" class="section-p1">
     <a href="#" @click="getFirstPagi()">First</a>
-    <a href="#" v-for="page in totalPaginate()" :key="page" @click="getDataPaginate(page)">{{page}}</a>
+    <a href="#" v-for="page in totalPaginate()" :key="page" @click.prevent="getDataPaginate(page)">{{page}}</a>
     <a href="#" @click="getLastPagi()">Last</a>
   </section>
   <FooterVue />

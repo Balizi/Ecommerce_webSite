@@ -85,7 +85,7 @@ class Article{
 
     public function imgDetails()
     {
-        $req="SELECT a.genre, i.image FROM imgdetails i INNER JOIN article a on a.idArticle=i.idArticle WHERE a.idArticle=?";
+        $req="SELECT a.genre, i.image FROM imgdetails i INNER JOIN article a on a.idArticle=i.idArt WHERE a.idArticle=?";
         $tmp=$this->conn->prepare($req);
         $tmp->bindParam(1,$this->idArticle);
         $tmp->execute();

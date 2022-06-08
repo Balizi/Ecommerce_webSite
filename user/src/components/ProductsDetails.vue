@@ -57,7 +57,7 @@ export default {
   mounted() {
     this.Details();
     this.imgDetails();
-    JSON.parse(localStorage.getItem('produite'));
+    // JSON.parse(localStorage.getItem('produite'));
     // let arr =JSON.parse(localStorage.getItem('produite'));
     // console.log(arr);
   },
@@ -76,7 +76,7 @@ export default {
     },
     add()
     {
-        console.log(this.data[0].idArticle);
+        // console.log(this.data[0]);
         let produitepanier=JSON.parse(localStorage.getItem("produite"));
 
         produitepanier.forEach(element => {
@@ -89,6 +89,7 @@ export default {
             if(produitepanier){
                 produitepanier = [...produitepanier,...this.data];
                 localStorage.setItem("produite",JSON.stringify(produitepanier));
+                this.$store.state.nb=JSON.parse(localStorage.getItem("produite"));
             }
             else{
                 localStorage.setItem("produite",JSON.stringify(this.data));

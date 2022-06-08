@@ -79,7 +79,7 @@
         <div class="search ps-3 pe-3 d-none d-lg-block">
           <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
           <!-- <router-link to="/login"><i class="fa-solid fa-user"></i></router-link> -->
-          <router-link to="/paniervue">  <i class="fa-solid fa-cart-shopping"></i><span v-if="this.nb>0">{{this.nb}}</span></router-link>
+          <router-link to="/paniervue">  <i class="fa-solid fa-cart-shopping"></i><span v-if="this.$store.state.nb.length>0">{{this.$store.state.nb.length}}</span></router-link>
         </div>
       </div>
     </div>
@@ -104,7 +104,6 @@ export default {
     count()
     {
       this.nb=JSON.parse(localStorage.getItem("produite")).length;
-      console.log(this.nb);
     },
     con()
     {
@@ -116,7 +115,7 @@ export default {
     logout()
     {
       localStorage.removeItem('userInfo');
-      location.reload();
+      // location.reload();
     }
   },
 };

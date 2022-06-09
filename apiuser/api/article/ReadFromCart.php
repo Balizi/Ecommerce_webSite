@@ -10,6 +10,8 @@ $db=new Databbase();
 $database=$db->connect();
 
 $article=new Article($database);
-$res=$article->getCtaegorieHome();
+$res=$article->ReadFromCart();
 
-echo json_encode($res);
+echo json_encode($res)
+
+?>

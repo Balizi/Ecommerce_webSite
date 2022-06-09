@@ -79,10 +79,13 @@ export default {
         // console.log(this.data[0]);
         let produitepanier=JSON.parse(localStorage.getItem("produite"));
 
-        produitepanier.forEach(element => {
+        if(produitepanier)
+        {
+            produitepanier.forEach(element => {
             if(this.data[0].idArticle == element.idArticle)
                 return this.check =true;
-        });
+            });
+        }
         
         if(!this.check)
         {
@@ -90,11 +93,17 @@ export default {
                 produitepanier = [...produitepanier,...this.data];
                 localStorage.setItem("produite",JSON.stringify(produitepanier));
                 this.$store.state.nb=JSON.parse(localStorage.getItem("produite"));
+                console.log(produitepanier.length);
             }
             else{
                 localStorage.setItem("produite",JSON.stringify(this.data));
+                this.$store.state.nb=JSON.parse(localStorage.getItem("produite"));
+                // console.log(produitepanier.length);
             }
         }
+
+        this.inseert();
+
     },
     Choose()
     {
@@ -115,6 +124,17 @@ export default {
         smallimg[3].onclick=function(){
             MainImg.src=smallimg[3].src;
         }
+    },
+    inseert()
+    {
+        axios.post('http://localhost/1FilRouge/apiuser/api/article/addTocart.php',{
+            qte:this.data[0].qte,
+            idClient:JSON.parse(localStorage.getItem("userInfo")).idClent,
+            idArticle:this.$route.params.idArticle
+          }).then((response) => {
+            this.read();
+            console.log(response.data);
+        });
     }
 
   }

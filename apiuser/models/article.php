@@ -10,6 +10,7 @@ class Article{
     public $image;
     public $categorie;
     public $genre;
+    public $qte;
 
     public $idClient;
 
@@ -36,34 +37,6 @@ class Article{
     }
 
     public function getArticleByCatego()
-    {
-        $req="SELECT * FROM `article` WHERE categorie = ? and genre = ?";
-        $tmp=$this->conn->prepare($req);
-        $tmp->bindParam(1,$this->categorie);
-        $tmp->bindParam(2,$this->genre);
-        $tmp->execute();
-        return $tmp->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function getArticlesHomme()
-    {
-        $req="SELECT * FROM `article` WHERE categorie = ? and genre = 'Homme'";
-        $tmp=$this->conn->prepare($req);
-        $tmp->bindParam(1,$this->categorie);
-        $tmp->execute();
-        return $tmp->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function getArticlesFemme()
-    {
-        $req="SELECT * FROM `article` WHERE categorie = ? and genre = 'femme'";
-        $tmp=$this->conn->prepare($req);
-        $tmp->bindParam(1,$this->categorie);
-        $tmp->execute();
-        return $tmp->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function getArticlesEnf()
     {
         $req="SELECT * FROM `article` WHERE categorie = ? and genre = ?";
         $tmp=$this->conn->prepare($req);
@@ -105,6 +78,26 @@ class Article{
             return true;
         }
         return false;
+    }
+
+    public function AddToCart()
+    {
+        $req="INSERT INTO `cart`(`qte`, `idClient`, `idArticle`) VALUES (:qte,:idClient,:idArticle)";
+        $stmt=$this->conn->prepare($req);
+        $stmt->bindParam(':qte',$this->qte);
+        $stmt->bindParam(':idClient',$this->idClient);
+        $stmt->bindParam(':idArticle',$this->idArticle);
+        if($stmt->execute())
+            return true;
+        return false;
+    }
+
+    public function ReadFromCart()
+    {
+        $req="SELECT * FROM cart c INNER JOIN article a on c.idArticle=a.idArticle";
+        $stmt=$this->conn->prepare($req);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }

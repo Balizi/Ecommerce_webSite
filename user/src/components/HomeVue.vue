@@ -109,6 +109,7 @@ export default {
   {
     return {
       data:[],
+      panier:[],
       da:{
         titre:null,
         categorie:null,
@@ -139,6 +140,10 @@ export default {
       let fin=(1 * this.elementPagination);
       this.dataPaginate=res.data.data.slice(ini,fin);
       this.data=res.data.data;
+    },
+    getData()
+    {
+      this.panier=JSON.parse(localStorage.getItem('produite'));
     },
     totalPaginate()
     {

@@ -78,8 +78,8 @@
 
         <div class="search ps-3 pe-3 d-none d-lg-block">
           <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-          <!-- <router-link to="/login"><i class="fa-solid fa-user"></i></router-link> -->
-          <router-link to="/paniervue">  <i class="fa-solid fa-cart-shopping"></i><span v-if="this.$store.state.nb.length>0">{{this.$store.state.nb.length}}</span></router-link>
+          <!-- <router-link to="/paniervue">  <i class="fa-solid fa-cart-shopping"></i><span v-if="this.$store.state.nb.length>0">{{this.$store.state.nb.length}}</span></router-link> -->
+          <router-link to="/paniervue">  <i class="fa-solid fa-cart-shopping"></i><span v-if="$store.state.nb != null">{{$store.state.nb.length}}</span></router-link>
         </div>
       </div>
     </div>
@@ -111,11 +111,13 @@ export default {
       if (produitepanier) {
         this.lg=true;
       }
+      
     },
     logout()
     {
-      localStorage.removeItem('userInfo');
-      // location.reload();
+      localStorage.clear();
+      this.$router.push({ name: "HomeVue" });
+      location.reload();
     }
   },
 };

@@ -55,7 +55,8 @@ export default {
         email:null,
         password:null
       },
-      client:[]
+      client:[],
+      panier:[]
     }
   },
   mounted() {
@@ -71,6 +72,7 @@ export default {
     },
     login()
     {
+      
       axios.post('http://localhost/1FilRouge/apiuser/api/client/login.php',{
         email:this.info.email,
         password:this.info.password
@@ -79,9 +81,42 @@ export default {
         {
           this.client=response.data.dt;
           localStorage.setItem("userInfo",JSON.stringify(this.client));
+          this.send();
+          // this.read();
           this.$router.push({ name: "HomeVue" });
         }
       })
+
+      
+    },
+    send()
+    {
+      this.panier=JSON.parse(localStorage.getItem("produite"));
+      if(this.panier != null)
+      {
+        this.panier.forEach(elm=>{
+          axios.post('http://localhost/1FilRouge/apiuser/api/article/addTocart.php',{
+            qte:elm.qte,
+            idClient:this.client.idClent,
+            idArticle:elm.idArticle
+          }).then((response) => {
+            this.read();
+            console.log(response.data);
+          });
+        })
+        localStorage.removeItem('produite');
+        this.$store.state.nb=JSON.parse(localStorage.getItem("produite"));
+      }else{
+        this.read();
+      }
+    },
+    async read()
+    {
+      let res=await axios.get('http://localhost/1FilRouge/apiuser/api/article/ReadFromCart.php');
+      // console.log(res.data);
+      localStorage.setItem("produite",JSON.stringify(res.data));
+      console.log(res.data);
+      this.$store.state.nb=JSON.parse(localStorage.getItem("produite"));
     }
   },
 };

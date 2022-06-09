@@ -1,7 +1,7 @@
 <template>
     <div class="pannel">
         <HeaderVue />
-        <section id="cart" class="section-p1">
+        <section id="cart" class="section-p1" >
             <table width="100%">
                 <thead>
                     <tr>
@@ -14,7 +14,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="dt in $store.state.nb" :key="dt.idArticle">
+                    <tr v-for="dt in data" :key="dt.idArticle">
                         <td @click="removeItem(dt)"> <a href="#"><i class="far fa-times-circle"></i></a></td>
                         <!-- <td @click="removeItem(dt)"> <a href="#">x</a></td> -->
                         <td v-if="dt.genre == 'Homme'"><img :src="require(`./../assets/img/product/homme/${dt.image}`)" alt=""></td>
@@ -31,7 +31,7 @@
 
         
 
-        <section id="cart-add" class="section-p1">
+        <section id="cart-add" class="section-p1" v-if="this.s > 0">
             <div id="subtotal" >
                 <h3>Cart Totale</h3>
                 <table>
@@ -48,7 +48,7 @@
                         <td><strong>{{this.s}} MAD</strong></td>
                     </tr>
                 </table>
-                <button class="normal cl" @click="By()">FINALISER LA COMMANDE</button>
+                <button class="normal cl" @click="By()" >FINALISER LA COMMANDE</button>
             </div>
         </section>
 
@@ -141,9 +141,12 @@ export default {
     },
     totale()
     {
-        this.data.forEach(dt=>{
-            this.s+=(dt.prix*dt.qte);
-        })
+        if(this.data !=null)
+        {
+            this.data.forEach(dt=>{
+                this.s+=(dt.prix*dt.qte);
+            })
+        }
     }
   },
 };

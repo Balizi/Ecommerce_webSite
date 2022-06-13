@@ -26,8 +26,8 @@
                     <option value="17">Large</option>
                     <option value="18">XLarge</option>
                 </select> -->
-                <input type="number" path="note" name="" min="1" v-model="data[0].qte" id="val" >
-                <button @click="add()" class="normal">Add To Cart</button>
+                <input type="number" path="note"  min="1" v-model="data[0].qte" id="val" >
+                <button @click="add()" class="normal">Ajouter au panier</button>
                 <h4>Product Details</h4>
                 <span>{{dt.description}}</span>
             </div>

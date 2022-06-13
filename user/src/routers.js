@@ -4,6 +4,7 @@ import ProductsDetails from './components/ProductsDetails.vue'
 import PanierVue from './components/PanierVue.vue'
 import LoginUser from './components/LoginUser.vue'
 import RegisterVue from './components/RegisterVue.vue'
+import ContactUs from './components/ContactUs.vue'
 
 import { createRouter,createWebHistory } from 'vue-router'
 
@@ -17,6 +18,11 @@ const routes=[
         name:'ProductsVue',
         component:ProductsVue,
         path:'/products/:categorie/:genre'
+    },
+    {
+        name:'ContactUs',
+        component:ContactUs,
+        path:'/contact'
     },
     {
         name:'ProductsDetails',

@@ -3,64 +3,14 @@
 
   <section id="hero">
     <!-- <h4>Trade-in-offer</h4> -->
-    <h2>Super value deals</h2>
+    <!-- <h2>Super value deals</h2>
     <h1>On all products</h1>
-    <button>Shop Now</button>
+    <button>Shop Now</button> -->
   </section>
 
-  <!-- <section id="boutique">
-    <div class="head">Boutiques Officielles</div>
-    <div class="img">
-      <div class="str">
-        <img src="./../assets/img/boutique/1_260x144.png" alt="" />
-      </div>
-      <div class="str">
-        <img src="./../assets/img/boutique/29_260x144.png" alt="" />
-      </div>
-      <div class="str">
-        <img src="./../assets/img/boutique/30t_260x144.png" alt="" />
-      </div>
-    </div>
-  </section> -->
 
-  <section id="summer">
-    <div class="head">Collection d'été Nouveau design moderne</div>
-    <div class="pro-contaier">
-      <div class="pro">
-        <img src="./../assets/img/products/f1.jpg" alt="" />
-        <div class="des">
-          <span>adidas</span>
-          <h5>Carton Astronaut T-Shirts</h5>
-          <h4>$78</h4>
-        </div>
-      </div>
 
-      <div class="pro">
-        <img src="./../assets/img/products/f1.jpg" alt="" />
-        <div class="des">
-          <span>adidas</span>
-          <h5>Carton Astronaut T-Shirts</h5>
-          <h4>$78</h4>
-        </div>
-      </div>
-      <div class="pro">
-        <img src="./../assets/img/products/f1.jpg" alt="" />
-        <div class="des">
-          <span>adidas</span>
-          <h5>Carton Astronaut T-Shirts</h5>
-          <h4>$78</h4>
-        </div>
-      </div>
-      <div class="pro">
-        <img src="./../assets/img/products/f1.jpg" alt="" />
-        <div class="des">
-          <span>adidas</span>
-          <h5>Carton Astronaut T-Shirts</h5>
-          <h4>$78</h4>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
     <section id="banner" class="section-m1">
         <h4>Repair Services</h4>
@@ -203,7 +153,7 @@ a{
   text-decoration: none;
 }
 
-#hero h4 {
+/* #hero h4 {
   padding-bottom: 10px;
   color: white;
 }
@@ -229,7 +179,7 @@ a{
   cursor: pointer;
   font-weight: 700;
   font-size: 15px;
-}
+} */
 /* ---------- */
 #boutique {
   width: 60%;
@@ -252,86 +202,7 @@ a{
   padding: 10px 0;
   background-color: #f5f5f5;
 }
-/* --------- */
 
-#summer {
-  width: 60%;
-  margin: 80px auto;
-  text-align: center;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom: 0.5px solid #000;
-  flex-wrap: wrap;
-}
-
-#summer .head {
-  background-color: #ffc108;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  font-size: 30px;
-  color: white;
-}
-
-#summer .pro-contaier {
-  display: flex;
-  justify-content: space-around;
-  padding-top: 20px;
-  flex-wrap: wrap;
-  background-color: #f5f5f5;
-}
-
-#summer .pro {
-  width: 20%;
-  /* min-width: 250px; */
-  padding: 10px 12px;
-  border: 1px solid #cce7d0;
-  border-radius: 25px;
-  cursor: pointer;
-  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
-  margin: 15px 0;
-  transition: 0.2s ease;
-  position: relative;
-  background-color: white;
-}
-
-#summer .pro:hover {
-  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
-}
-
-#summer .pro img {
-  width: 100%;
-  border-radius: 20px;
-}
-
-#summer .pro .des {
-  text-align: start;
-  padding: 10px 0;
-}
-
-#summer .pro .des span {
-  color: #606063;
-  font-size: 12px;
-}
-
-#summer .pro.des h5 {
-  padding-top: 7px;
-  color: #1a1a1a;
-  font-size: 14px;
-}
-
-#summer .pro .des i {
-  font-size: 12px;
-  color: rgb(243, 181, 25);
-}
-
-#summer .pro .des h4 {
-  /* padding-top: 7px; */
-  font-size: 15px;
-  font-weight: 700;
-  color: #088178;
-}
-
-/* ------------ */
 
 #banner {
     display: flex;
@@ -344,7 +215,6 @@ a{
     height: 40vh;
     background-size: cover;
     background-position: center;
-    margin-top: 100px;
 }
 
 #banner h4 {

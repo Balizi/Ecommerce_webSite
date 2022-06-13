@@ -11,7 +11,7 @@
             <img v-if="art.genre == 'femme'" :src="require(`../assets/img/product/femme/${art.image}`)" />
             <img v-if="art.genre == 'enfant'" :src="require(`../assets/img/product/enfant/${art.image}`)" />
             <div class="des">
-              <span>adidas</span>
+              <!-- <span>adidas</span> -->
               <h5>{{ art.titre }}</h5>
               <h4>{{ art.prix }} MAD</h4>
             </div>
@@ -21,7 +21,7 @@
     </div>
   </section>
 
-  <section id="pagination" class="section-p1">
+  <section id="pagination" class="section-p1" v-if="this.articles.length > 6">
     <a href="#" @click="getFirstPagi()">First</a>
     <a href="#" v-for="page in totalPaginate()" :key="page" @click.prevent="getDataPaginate(page)">{{page}}</a>
     <a href="#" @click="getLastPagi()">Last</a>

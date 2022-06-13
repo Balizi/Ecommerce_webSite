@@ -139,6 +139,7 @@ export default {
             modal.style.display='block';
             this.delete();
             this.getData();
+            // this.$forceUpdate();
         }
 
         document.querySelector('#closeBtn').addEventListener('click',()=>{

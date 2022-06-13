@@ -68,7 +68,7 @@
             <a class="nav-link p-2 p-lg-3" href="#">PROMOTINS</a>
           </li> -->
           <li class="nav-item">
-            <a class="nav-link p-2 p-lg-3" href="#">Contact</a>
+            <router-link class="nav-link p-2 p-lg-3" to="/contact">Contact</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link p-2 p-lg-3" to="/login" v-if="!this.lg">S'identifier</router-link>

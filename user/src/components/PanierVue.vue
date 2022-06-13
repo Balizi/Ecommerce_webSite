@@ -15,8 +15,8 @@
                 </thead>
                 <tbody>
                     <tr v-for="dt in data" :key="dt.idArticle">
-                        <td @click="removeItem(dt)"> <a href="#"><i class="far fa-times-circle"></i></a></td>
-                        <!-- <td @click="removeItem(dt)"> <a href="#">x</a></td> -->
+                        <td > <a @click="removeItem(dt)" href="#"><i class="far fa-times-circle"></i></a></td>
+                        <!-- <td > <a @click="delet(dt.id)" href="#"><i class="far fa-times-circle"></i></a></td> -->
                         <td v-if="dt.genre == 'Homme'"><img :src="require(`./../assets/img/product/homme/${dt.image}`)" alt=""></td>
                         <td v-if="dt.genre == 'femme'"><img :src="require(`./../assets/img/product/femme/${dt.image}`)" alt=""></td>
                         <td v-if="dt.genre == 'enfant'"><img :src="require(`../assets/img/product/enfant/${dt.image}`)" alt=""></td>
@@ -31,7 +31,7 @@
 
         
 
-        <section id="cart-add" class="section-p1" v-if="this.s > 0">
+        <section id="cart-add" class="section-p1" v-if="this.data != null">
             <div id="subtotal" >
                 <h3>Cart Totale</h3>
                 <table>
@@ -73,7 +73,7 @@
 <script>
 import HeaderVue from "./HeaderVue.vue";
 import FooterVue from "./FooterVue.vue";
-// import axios from "axios";
+import axios from 'axios';
 export default {
   name: "PanierVue",
   data() {
@@ -81,7 +81,7 @@ export default {
       data: [],
       useInfo:[],
       s:0,
-      f:0
+      f:0,
     };
   },
   components: {
@@ -106,32 +106,39 @@ export default {
     {
         let index=this.data.indexOf(x);
         this.data.splice(index,1);
+        console.log(x.id);
         this.saveData(x);
+        let produitepanier = JSON.parse(localStorage.getItem("userInfo"));
+        if (produitepanier) 
+        {
+            this.deletPr(x);
+        }
         this.$store.state.nb=JSON.parse(localStorage.getItem("produite"));
         this.s=0;
         this.totale();
     },
     By()
     {
-        let produitepanier=JSON.parse(localStorage.getItem("userInfo"));
-        this.useInfo=produitepanier;
+        let userLogeed=JSON.parse(localStorage.getItem("userInfo"));
+        this.useInfo=userLogeed;
         
         var modal=document.getElementById('simpleModal');
-        if(!produitepanier)
+        if(!userLogeed)
         {
             this.$router.push({name:'LoginUser'})
         }else{
-            // this.data.forEach(val=>{
-            //     axios.post("http://localhost/1FilRouge/apiuser/api/article/commander.php",{
-            //         idArticle:val.idArticle,
-            //         idClient:produitepanier.idClent
-            //     }).then((res)=>{
-            //         console.log(res.data.message);
-            //         // alert('try')
-            //     })
-            // })
-            // console.log(produitepanier.idClent);
+            this.data.forEach(val=>{
+                axios.post("http://localhost/1FilRouge/apiuser/api/article/commander.php",{
+                    idArticle:val.idArticle,
+                    idClient:userLogeed.idClent
+                }).then((res)=>{
+                    console.log(res.data.message);
+                })
+            })
+            localStorage.removeItem('produite');
             modal.style.display='block';
+            this.delete();
+            this.getData();
         }
 
         document.querySelector('#closeBtn').addEventListener('click',()=>{
@@ -147,6 +154,16 @@ export default {
                 this.s+=(dt.prix*dt.qte);
             })
         }
+    },
+    deletPr(x)
+    {
+        axios.delete('http://localhost/1FilRouge/apiuser/api/article/deletecart.php?id='+x.id).then((res)=>{
+            console.log(res.data);
+        })
+    },
+    delete()
+    {
+        axios.delete('http://localhost/1FilRouge/apiuser/api/article/delete.php');
     }
   },
 };

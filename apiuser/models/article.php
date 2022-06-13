@@ -3,6 +3,7 @@
 class Article{
     private $conn;
 
+    public $id;
     public $idArticle;
     public $titre;
     public $description;
@@ -45,7 +46,6 @@ class Article{
         $tmp->execute();
         return $tmp->fetchAll(PDO::FETCH_ASSOC);
     }
-    
 
     public function proDetails()
     {
@@ -80,6 +80,14 @@ class Article{
         return false;
     }
 
+    public function ReadFromCart()
+    {
+        $req="SELECT * FROM cart c INNER JOIN article a on c.idArticle=a.idArticle";
+        $stmt=$this->conn->prepare($req);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function AddToCart()
     {
         $req="INSERT INTO `cart`(`qte`, `idClient`, `idArticle`) VALUES (:qte,:idClient,:idArticle)";
@@ -92,12 +100,23 @@ class Article{
         return false;
     }
 
-    public function ReadFromCart()
+    public function DeleteFromCart()
     {
-        $req="SELECT * FROM cart c INNER JOIN article a on c.idArticle=a.idArticle";
+        $req="DELETE FROM `cart` WHERE id=?";
         $stmt=$this->conn->prepare($req);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->bindParam(1,$this->id);
+        if($stmt->execute())
+            return true;
+        return false;
+    }
+
+    public function delete()
+    {
+        $req="DELETE FROM cart";
+        $stmt=$this->conn->prepare($req);
+        if($stmt->execute())
+            return true;
+        return false;
     }
 
 }

@@ -127,14 +127,19 @@ export default {
     },
     inseert()
     {
-        axios.post('http://localhost/1FilRouge/apiuser/api/article/addTocart.php',{
-            qte:this.data[0].qte,
-            idClient:JSON.parse(localStorage.getItem("userInfo")).idClent,
-            idArticle:this.$route.params.idArticle
-          }).then((response) => {
-            this.read();
-            console.log(response.data);
-        });
+        let produitepanier = JSON.parse(localStorage.getItem("userInfo"));
+        if (produitepanier) 
+        {
+            axios.post('http://localhost/1FilRouge/apiuser/api/article/addTocart.php',{
+                qte:this.data[0].qte,
+                idClient:JSON.parse(localStorage.getItem("userInfo")).idClent,
+                idArticle:this.$route.params.idArticle
+              }).then((response) => {
+                this.read();
+                console.log(response.data);
+            });
+        }
+
     }
 
   }

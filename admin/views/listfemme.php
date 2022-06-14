@@ -3,7 +3,7 @@
     $res=$data->getProductFemme();
 ?>
 
-<input type="checkbox" id="nav-toggle">
+    <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
             <h2><span class="lab la-accusoft"></span> <span>IL MEGLIO</span></h2>
@@ -12,7 +12,7 @@
         <div class="sidebare-menu">
             <ul>
                 <li>
-                    <a href="home.php" >
+                    <a href="index" >
                         <span class="las la-igloo"></span>
                         <span>DashBoard</span>
                     </a>
@@ -98,10 +98,10 @@
                                                 <img src=<?= "public/img/femme/".$val['image']  ?> >
                                             </td>
                                             <td class="fr">
-                                                <form action="modifier_produite.php" method="post">
-                                                    <input type="hidden" name="id" value="" />
+                                                <form action="update" method="post">
+                                                    <input type="hidden" name="idd" value="<?= $val['idArticle']?>" />
                                                     <span class="action_btn">
-                                                        <button type="submit" name="submit">Modifier</button>
+                                                        <button type="submit" name="id">Modifier</button>
                                                     </span>
                                                 </form>
                                                 <form action="deleteProduct" method="post">

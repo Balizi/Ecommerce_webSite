@@ -99,8 +99,8 @@
                                                 <img src=<?= "public/img/homme/".$val['image']  ?> >
                                             </td>
                                             <td class="fr">
-                                                <form action="modifier_produite" method="post">
-                                                    <input type="hidden" name="id" value="<?= $val['idArticle']?>" />
+                                                <form action="update" method="post">
+                                                    <input type="hidden" name="idd" value="<?= $val['idArticle']?>" />
                                                     <span class="action_btn">
                                                         <button type="submit" name="id">Modifier</button>
                                                     </span>

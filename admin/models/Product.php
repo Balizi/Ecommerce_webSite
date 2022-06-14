@@ -16,6 +16,15 @@ class Product
         return $tmp->fetchAll();
     }
 
+    public static function select($data)
+    {
+        $id=$data['id'];
+        $tmp = DB::connexion()->prepare("SELECT * FROM article WHERE idArticle=:id");
+        $tmp->execute(array(":id"=>$id));
+        $employe=$tmp->fetch(PDO::FETCH_OBJ);
+        return $employe;
+    }
+
     public static function addPro($data)
     {
         $req='INSERT INTO article(titre, description, prix, image, categorie,genre) VALUES (:titre,:description,:prix,:image,:categorie,:genre)';

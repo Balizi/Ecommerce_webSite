@@ -45,4 +45,14 @@ class ProductController{
         }
     }
 
+    public function getOne()
+    {
+        if(isset($_POST['id']))
+        {
+            $data=array('id'=>$_POST['idd']);
+            $pr=Product::select($data);
+            return $pr;
+        }
+    }
+
 }

@@ -49,7 +49,7 @@
                 </li>
                 <li>
                     <a href="update" class="active">
-                        <span class="las la-clipboard-list"></span>
+                        <span class="las la-edit"></span>
                         <span>Modifer un Produit</span>
                     </a>
                 </li>

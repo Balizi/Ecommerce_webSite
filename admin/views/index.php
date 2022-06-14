@@ -36,6 +36,12 @@
                         <span>chercher un produit</span>
                     </a>
                 </li>
+                <li>
+                    <a href="listClient" >
+                        <span class="las la-user-edit"></span>
+                        <span>list des Client</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

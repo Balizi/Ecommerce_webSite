@@ -1,6 +1,8 @@
 <?php
-    $data=new ProductController();
-    $res=$data->getProductFemme();
+    $clt=new ClientController();
+    $res=$clt->getClient();
+        // var_dump($res);
+        // die();
 ?>
 
     <input type="checkbox" id="nav-toggle">
@@ -12,19 +14,19 @@
         <div class="sidebare-menu">
             <ul>
                 <li>
-                    <a href="index" >
+                    <a href="index">
                         <span class="las la-igloo"></span>
                         <span>DashBoard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="home" >
+                    <a href="home">
                         <span class="las la-shopping-bag"></span>
                         <span>List des Produit home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="listfemme" class="active">
+                    <a href="listfemme">
                         <span class="las la-shopping-bag"></span>
                         <span>List des Produit Femme</span>
                     </a>
@@ -36,13 +38,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="search.php" >
+                    <a href="search" >
                         <span class="las la-search"></span>
                         <span>chercher un produit</span>
                     </a>
                 </li>
                 <li>
-                    <a href="listClient" >
+                    <a href="listClient" class="active">
                         <span class="las la-user-edit"></span>
                         <span>list des Client</span>
                     </a>
@@ -62,8 +64,8 @@
             <div class="user-wrapper">
                 <img src="./public/img/user.jpg" width="40px" height="40px" alt="">
                 <div>
-                    <h4><?=$_SESSION['username']?></h4>
-                    <a href="logout.php"><small>Déconexion</small></a>
+                    <h4> <?=$_SESSION['username']?></h4>
+                    <a href="logout"><small>Déconexion</small></a>
                 </div>
             </div>
         </header>
@@ -73,9 +75,7 @@
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
-                            <h3>List des Produit</h3>
-
-                            <!-- <button >Ajouter Produit <span class="las la-arrow-right"></span></button> -->
+                            <h3>list des Client</h3>
                         </div>
                                        
                         <div class="card-body">
@@ -83,42 +83,23 @@
                                 <table width="80%" class="content-table">
                                     <thead>
                                         <tr>
-                                            <th>Titre</th>
-                                            <th>Categorie</th>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>Email</th>
+                                            <th>Téléphone</th>
                                             <th>Genre</th>
-                                            <th>Prix</th>
-                                            <th>Description</th>
-                                            <th>Image</th>
-                                            <th width="10px">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach($res as $val):?>
-                                        <tr >
-                                            <td data-label="Id"><?= $val['titre']?></td>
-                                            <td data-label="Nom"><?= $val['categorie']?></td>
-                                            <td data-label="Prix"><?= $val['genre']?></td>
-                                            <td data-label="Catégorie"><?= $val['prix']." MAD";?></td>
-                                            <td data-label="Catégorie"><?= $val['description']?></td>
-                                            <td data-label="Image">
-                                                <img src=<?= "public/img/femme/".$val['image']  ?> >
-                                            </td>
-                                            <td class="fr">
-                                                <form action="update" method="post">
-                                                    <input type="hidden" name="idd" value="<?= $val['idArticle']?>" />
-                                                    <span class="action_btn">
-                                                        <button type="submit" name="id">Modifier</button>
-                                                    </span>
-                                                </form>
-                                                <form action="deleteProduct" method="post">
-                                                    <input type="hidden" name="idd" value="<?= $val['idArticle']?>" />
-                                                    <span class="action_btn"> 
-                                                        <button type="submit" name="id">Supprimer</button>
-                                                    </span>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <?php endforeach;?>
+                                            <tr>
+                                                <td data-label="Id"><?= $val['nom']?></td>
+                                                <td data-label="Nom"><?= $val['prenom']?></td>
+                                                <td data-label="Prix"><?= $val['email']?></td>
+                                                <td data-label="Catégorie"><?= $val['tele'];?></td>
+                                                <td data-label="Catégorie"><?= $val['genre']?></td>
+                                            </tr>
+                                        <?php endforeach;?> 
                                     </tbody>
                                 </table>
                             </div> 

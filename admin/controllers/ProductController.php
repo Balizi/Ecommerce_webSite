@@ -37,12 +37,10 @@ class ProductController{
         if(isset($_POST['id']))
         {
             $data['id']=$_POST['idd'];
-            // var_dump($data);
-            // die();
             $res=Product::deletePro($data);
-            if($res === 'ok')
+            if($res === 'OK')
             {
-                echo "<script>alert('yes')</script>";
+                header('location:index');
             }
         }
     }

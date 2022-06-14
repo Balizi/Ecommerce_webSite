@@ -29,7 +29,7 @@ class Product
         $tmp->execute();
         header("Location:index.php");
     }
-
+    
     public static function deletePro($data)
     {
         $id=$data['id'];

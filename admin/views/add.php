@@ -23,13 +23,13 @@
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="lab la-accusoft"></span> <span>IL MEGLIO</span></h2>
+        <h2><span class="lab la-accusoft"></span> <span>Rymo</span></h2>
         </div>
 
         <div class="sidebare-menu">
             <ul>
                 <li>
-                    <a href="home.php" >
+                    <a href="index" >
                         <span class="las la-igloo"></span>
                         <span>DashBoard</span>
                     </a>
@@ -37,7 +37,13 @@
                 <li>
                     <a href="home">
                         <span class="las la-shopping-bag"></span>
-                        <span>List des Produit</span>
+                        <span>List des Produit home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="listfemme" >
+                        <span class="las la-shopping-bag"></span>
+                        <span>List des Produit Femme</span>
                     </a>
                 </li>
                 <li>

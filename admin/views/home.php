@@ -1,6 +1,7 @@
 <?php
     $data=new ProductController();
     $res=$data->getProductHomme();
+
 ?>
 
     <input type="checkbox" id="nav-toggle">
@@ -12,7 +13,7 @@
         <div class="sidebare-menu">
             <ul>
                 <li>
-                    <a href="home.php" >
+                    <a href="index" >
                         <span class="las la-igloo"></span>
                         <span>DashBoard</span>
                     </a>

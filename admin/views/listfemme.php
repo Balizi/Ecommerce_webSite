@@ -104,10 +104,10 @@
                                                         <button type="submit" name="submit">Modifier</button>
                                                     </span>
                                                 </form>
-                                                <form action="delete.php" method="post">
-                                                    <input type="hidden" name="id" value="" />
+                                                <form action="deleteProduct" method="post">
+                                                    <input type="hidden" name="idd" value="<?= $val['idArticle']?>" />
                                                     <span class="action_btn"> 
-                                                        <button type="submit" name="sub">Supprimer</button>
+                                                        <button type="submit" name="id">Supprimer</button>
                                                     </span>
                                                 </form>
                                             </td>

@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="search.php">
+                    <a href="chercher">
                         <span class="las la-search"></span>
                         <span>chercher un produit</span>
                     </a>
@@ -44,4 +44,23 @@
                 </li>
             </ul>
         </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h2>
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                <!-- Dashboard -->
+            </h2>
+            <div class="user-wrapper">
+                <img src="./public/img/user.jpg" width="40px" height="40px" alt="">
+                <div>
+                    <h4> <?=$_SESSION['username']?></h4>
+                    <a href="logout"><small>Déconexion</small></a>
+                </div>
+            </div>
+        </header>
+    
     </div>

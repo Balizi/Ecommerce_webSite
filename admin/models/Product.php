@@ -56,7 +56,19 @@ class Product
         return $employe;
     }
 
-    public static function updaate($data)
+    public static function chercher($data)
+    {
+       
+        $tmp = DB::connexion()->prepare("SELECT * FROM article WHERE titre LIKE ? OR categorie LIKE ?");
+        $value = '%'.$data['key'].'%';
+        $tmp->bindParam(1,$value);
+        $tmp->bindParam(2,$value);
+        $tmp->execute();
+        $res=$tmp->fetchAll();
+        return $res;
+    }
+
+    public static function update($data)
     {
         $req="UPDATE `article` SET `titre`=:titre,`description`=:description,`prix`=:prix,`image`=:image,`categorie`=:categorie,`genre`=:genre WHERE idArticle=:id";
         $stmt=DB::connexion()->prepare($req);

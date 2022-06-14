@@ -55,6 +55,16 @@ class ProductController{
         }
     }
 
+    public function search()
+    {
+        if(isset($_POST['search']))
+        {
+            $data=array('key'=>$_POST['key']);
+            $pr=Product::chercher($data);
+            return $pr;
+        }
+    }
+
     public function ControlleUpdate()
     {
         if(isset($_POST['update']))
@@ -68,7 +78,7 @@ class ProductController{
                 'description'=>$_POST['description'],
                 'image'=>$_POST['image'],
             );
-            $res=Product::updaate($data);
+            $res=Product::update($data);
             if($res == 'OK')
             {
                 header('location:index');

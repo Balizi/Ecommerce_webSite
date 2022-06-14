@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="search" >
+                    <a href="chercher" >
                         <span class="las la-search"></span>
                         <span>chercher un produit</span>
                     </a>

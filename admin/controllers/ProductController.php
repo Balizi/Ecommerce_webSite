@@ -55,4 +55,25 @@ class ProductController{
         }
     }
 
+    public function ControlleUpdate()
+    {
+        if(isset($_POST['update']))
+        {
+            $data=array(
+                'id'=>$_POST['idArt'],
+                'titre'=>$_POST['titre'],
+                'prix'=>$_POST['prix'],
+                'categorie'=>$_POST['categorie'],
+                'genre'=>$_POST['genre'],
+                'description'=>$_POST['description'],
+                'image'=>$_POST['image'],
+            );
+            $res=Product::updaate($data);
+            if($res == 'OK')
+            {
+                header('location:index');
+            }
+        }
+    }
+
 }

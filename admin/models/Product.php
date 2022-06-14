@@ -16,15 +16,6 @@ class Product
         return $tmp->fetchAll();
     }
 
-    public static function select($data)
-    {
-        $id=$data['id'];
-        $tmp = DB::connexion()->prepare("SELECT * FROM article WHERE idArticle=:id");
-        $tmp->execute(array(":id"=>$id));
-        $employe=$tmp->fetch(PDO::FETCH_OBJ);
-        return $employe;
-    }
-
     public static function addPro($data)
     {
         $req='INSERT INTO article(titre, description, prix, image, categorie,genre) VALUES (:titre,:description,:prix,:image,:categorie,:genre)';
@@ -53,6 +44,32 @@ class Product
 
         }catch(PDOException $ex){
             echo $ex->getMessage();
+        }
+    }
+
+    public static function select($data)
+    {
+        $id=$data['id'];
+        $tmp = DB::connexion()->prepare("SELECT * FROM article WHERE idArticle=:id");
+        $tmp->execute(array(":id"=>$id));
+        $employe=$tmp->fetch(PDO::FETCH_OBJ);
+        return $employe;
+    }
+
+    public static function updaate($data)
+    {
+        $req="UPDATE `article` SET `titre`=:titre,`description`=:description,`prix`=:prix,`image`=:image,`categorie`=:categorie,`genre`=:genre WHERE idArticle=:id";
+        $stmt=DB::connexion()->prepare($req);
+        $stmt->bindParam(':id',$data['id']);
+        $stmt->bindParam(':titre',$data['titre']);
+        $stmt->bindParam(':prix',$data['prix']);
+        $stmt->bindParam(':categorie',$data['categorie']);
+        $stmt->bindParam(':genre',$data['genre']);
+        $stmt->bindParam(':description',$data['description']);
+        $stmt->bindParam(':image',$data['image']);
+        if($stmt->execute())
+        {
+            return 'OK';
         }
     }
 }

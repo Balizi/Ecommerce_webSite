@@ -1,14 +1,18 @@
 <?php
 
-if(isset($_POST['id']))
-{
-    // var_dump($_POST);
-    // die();
-    $data=new ProductController();
-    $res=$data->getOne();
-    // var_dump($res);
-    // die();
-}
+    if(isset($_POST['id']))
+    {
+        $data=new ProductController();
+        $res=$data->getOne();
+        // var_dump($res);
+        // die();
+    }
+
+    if(isset($_POST['update']))
+    {
+        $data=new ProductController();
+        $data->ControlleUpdate();
+    }
 
 ?>
     <input type="checkbox" id="nav-toggle">
@@ -82,7 +86,8 @@ if(isset($_POST['id']))
     <div class="con">
         <div class="contain">
             <div class="contact-box">
-                <form method="POST" action="">
+                <form method="POST" >
+                    <input type="hidden" value="<?=$res->idArticle?>" name="idArt">
                     <input name="titre" value="<?= $res->titre;?>" type="text" class="field" placeholder="Titre" id="nom" required>
                     <input name="prix" value="<?= $res->prix;?>" type="number" class="field" placeholder="Prix" id="prix" required>
                     <input name="categorie" value="<?= $res->categorie;?>" type="text" class="field" placeholder="Catégorie" id="Catégorie" required>
@@ -91,7 +96,7 @@ if(isset($_POST['id']))
 
                     <div class="div_fill">
                         <p id="text">telecharger image</p>
-                        <input accept=".jpg, .jpeg, .png" type="file" name="image" id="btn_envira" >
+                        <input accept=".jpg, .jpeg, .png" type="file" name="image" id="btn_envira" require>
                     </div>
                     <button type="submit" name="update">Modifier</button>
                 </form>

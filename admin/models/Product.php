@@ -9,6 +9,22 @@ class Product
         return $tmp->fetchAll();
     }
 
+    public static function prVendu()
+    {
+        $tmp = DB::connexion()->prepare("SELECT * FROM commande");
+        $tmp->execute();
+        $res=$tmp->fetchAll();
+        return count($res);
+    }
+
+    public static function allPr()
+    {
+        $tmp = DB::connexion()->prepare("SELECT * FROM article");
+        $tmp->execute();
+        $res=$tmp->fetchAll();
+        return count($res);
+    }
+
     public static function getProFemme()
     {
         $tmp = DB::connexion()->prepare("SELECT * FROM article WHERE genre='femme'");

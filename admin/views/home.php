@@ -74,9 +74,7 @@
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
-                            <h3>List des Produit</h3>
-
-                            <!-- <button >Ajouter Produit <span class="las la-arrow-right"></span></button> -->
+                            <h3>List des Produite</h3>
                         </div>
                                        
                         <div class="card-body">

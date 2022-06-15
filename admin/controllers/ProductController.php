@@ -14,6 +14,18 @@ class ProductController{
         return $prds;
     }
 
+    public function ProduitVendu()
+    {
+        $prv=Product::prVendu();
+        return $prv;
+    }
+
+    public function AllPr()
+    {
+        $prv=Product::allPr();
+        return $prv;
+    }
+
     public function addProduct()
     {
         if(isset($_POST['add']))

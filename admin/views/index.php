@@ -1,4 +1,15 @@
-<input type="checkbox" id="nav-toggle">
+<?php
+
+    $prv=new ProductController();
+    $ProduiteVendu=$prv->ProduitVendu();
+    $ProduitsDispo=$prv->AllPr();
+
+    $clt=new ClientController();
+    $res=$clt->getClient();
+
+
+?>
+    <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
             <h2><span class="lab la-accusoft"></span> <span>Rymo</span></h2>
@@ -63,4 +74,37 @@
             </div>
         </header>
     
+        <main>
+            <div class="cards">
+                <div class="card-single">
+                    <div>
+                        <h1><?= count($res)?></h1>
+                        <span>Client</span>
+                    </div>
+                    <div>
+                        <span class="las la-user-circle"></span>
+                    </div>
+                </div>
+                <div class="card-single">
+                    <div>
+                        <h1><?= $ProduitsDispo?></h1>
+                        <span>produits Disponible en stock</span>
+                    </div>
+                    <div>
+                        <span class="las la-shopping-bag"></span>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div>
+                        <h1><?=$ProduiteVendu?></h1>
+                        <span>Produite Vendu</span>
+                    </div>
+                    <div>
+                        <span class="las la-shopping-bag"></span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
     </div>

@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 :root{
-    --main-color:#0066CC;
+    /* --main-color:#0066CC; */
+    --main-color:#53BF9D;
     --color-dark:#1D2231;
     --text-grey:#8390A2;
 }
@@ -167,7 +168,7 @@ table td, table th{
     font-size: 16px;
 }
 table th{
-    background-color: darkblue;
+    background-color: #F94C66;
     color: #fff;
 }
 table tbody tr:nth-child(even){
@@ -343,10 +344,6 @@ table tbody tr:nth-child(even){
 
 /*  */
 
-
-.action_btn button:first-child{
-    background-color: #00FF00;
-}
 .action_btn button{
     border: none;
     color: #fff;
@@ -354,19 +351,28 @@ table tbody tr:nth-child(even){
     font-weight: bold;
     border-radius: 3px;
 }
+
+.action_btn button:first-child{
+    background-color: #00FF00;
+}
 .card-body table tbody .fr{
     display: flex;
     gap: 10px;
     margin-top: 15px;
     border: none;
 }
-.card-body table tbody .fr form:last-child button{
+
+.card-body table tbody .fr form:nth-child(2) button{
     background-color: #FF1F1F;
 }
+
 .card-body table tbody .fr form button:hover{
     text-decoration: underline;
 }
 
+.card-body table tbody .fr form:nth-child(3) button{
+    background-color: #47B5FF;
+}
 
 
 /*  */

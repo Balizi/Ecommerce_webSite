@@ -115,6 +115,12 @@
                                                         <button type="submit" name="id">Supprimer</button>
                                                     </span>
                                                 </form>
+                                                <form action="addImageDetails" method="post">
+                                                    <input type="hidden" name="idd" value="<?= $val['idArticle']?>" />
+                                                    <span class="action"> 
+                                                        <button type="submit" name="id">Add</button>
+                                                    </span>
+                                                </form>
                                             </td>
                                         </tr>
                                         <?php endforeach;?>

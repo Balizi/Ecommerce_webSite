@@ -45,6 +45,16 @@ class Product
         $tmp->execute();
         header("Location:index.php");
     }
+
+    public static function addImgDetails($data)
+    {
+        $req="INSERT INTO imgdetails(idArt, image) VALUES (:idArt,:image)";
+        $tmp=DB::connexion()->prepare($req);
+        $tmp->bindParam(':idArt',$data['idArt']);
+        $tmp->bindParam(':image',$data['image']);
+        $tmp->execute();
+        header("Location:index.php");
+    }
     
     public static function deletePro($data)
     {

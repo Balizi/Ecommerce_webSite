@@ -44,6 +44,21 @@ class ProductController{
         }
     }
 
+    public function addDetails()
+    {
+        if(isset($_POST['addDetails']))
+        {
+            $data=array(
+                'idArt'=>$_POST['idArt'],
+                'image'=>$_POST['image']
+            );
+            // var_dump($data);
+            // die();
+            $add=new Product();
+            $add->addImgDetails($data);
+        }
+    }
+
     public function deleteVoyage()
     {
         if(isset($_POST['id']))

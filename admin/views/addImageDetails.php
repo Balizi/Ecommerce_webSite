@@ -1,24 +1,24 @@
 <?php
+    if(isset($_POST['id']))
+        $vr=$_POST['idd'];
 
-    $prv=new ProductController();
-    $ProduiteVendu=$prv->ProduitVendu();
-    $ProduitsDispo=$prv->AllPr();
-
-    $clt=new ClientController();
-    $res=$clt->getClient();
-
+    if(isset($_POST['addDetails']))
+    {
+        $add=new ProductController();
+        $add->addDetails();
+    }
 
 ?>
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="lab la-accusoft"></span> <span>Rymo</span></h2>
+        <h2><span class="lab la-accusoft"></span> <span>Rymo</span></h2>
         </div>
 
         <div class="sidebare-menu">
             <ul>
                 <li>
-                    <a href="index" class="active">
+                    <a href="index" >
                         <span class="las la-igloo"></span>
                         <span>DashBoard</span>
                     </a>
@@ -42,19 +42,26 @@
                     </a>
                 </li>
                 <li>
+                    <a href="addImageDetails" class="active">
+                        <span class="las la-clipboard-list"></span>
+                        <span>Ajouter Image Details</span>
+                    </a>
+                </li>
+                <li>
                     <a href="chercher">
                         <span class="las la-search"></span>
                         <span>chercher un produit</span>
                     </a>
                 </li>
                 <li>
-                    <a href="listClient" >
+                    <a href="listClient">
                         <span class="las la-user-edit"></span>
                         <span>list des Client</span>
                     </a>
                 </li>
             </ul>
         </div>
+
     </div>
 
     <div class="main-content">
@@ -65,46 +72,29 @@
                 </label>
                 <!-- Dashboard -->
             </h2>
+
             <div class="user-wrapper">
                 <img src="./public/img/user.jpg" width="40px" height="40px" alt="">
                 <div>
                     <h4> <?=$_SESSION['username']?></h4>
-                    <a href="logout"><small>Déconexion</small></a>
+                    <a href="logout.php"><small>Déconexion</small></a>
                 </div>
             </div>
         </header>
-    
-        <main>
-            <div class="cards">
-                <div class="card-single">
-                    <div>
-                        <h1><?= count($res)?></h1>
-                        <span>Client</span>
-                    </div>
-                    <div>
-                        <span class="las la-user-circle"></span>
-                    </div>
-                </div>
-                <div class="card-single">
-                    <div>
-                        <h1><?= $ProduitsDispo?></h1>
-                        <span>produits Disponible en stock</span>
-                    </div>
-                    <div>
-                        <span class="las la-shopping-bag"></span>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <h1><?=$ProduiteVendu?></h1>
-                        <span>Produite Vendu</span>
-                    </div>
-                    <div>
-                        <span class="las la-shopping-cart"></span>
-                    </div>
-                </div>
-
-            </div>
-        </main>
     </div>
+
+    <div class="con">
+        <div class="contain">
+            <div class="contact-box">
+                <form method="POST">
+                    <input type="hidden" name="idArt" value="<?= $vr;?>">
+                    <div class="div_fill">
+                        <p id="text">telecharger image</p>
+                        <input accept=".jpg, .jpeg, .png" type="file" name="image" id="btn_envira">
+                    </div>
+                    <button type="submit" name="addDetails">Ajouter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    

@@ -5,7 +5,7 @@
 
     $home=new HomeController();
 
-    $pages=['home','add','deleteProduct','update','listfemme','login','register','logout','index','listClient','chercher'];
+    $pages=['home','add','deleteProduct','update','listfemme','login','register','logout','index','listClient','chercher','addImageDetails'];
 
     if(isset($_SESSION['connecter']) && $_SESSION['connecter'] === true)
     {

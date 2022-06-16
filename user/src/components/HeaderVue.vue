@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <router-link to="/" class="navbar-brand"
-        ><img src="./../assets/img/logo.png" alt=""
+        ><img src="./../assets/img/logo1.png" style="width: 100px;" alt=""
       /></router-link>
       <button
         class="navbar-toggler"
@@ -144,6 +144,7 @@ export default {
 
 .search a{
   text-decoration: none;
+  /* width: 50px; */
 }
 
 .search a span{
@@ -193,6 +194,7 @@ export default {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  margin-top: 8px;
 }
 
 .dropdown-contentf a, 
@@ -202,6 +204,12 @@ export default {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+}
+
+.dropdown-content li:first-child,
+.dropdown-contentf li:first-child,
+.dropdown-contenten li:first-child{
+  padding: 10px 0;
 }
 
 .dropdown-content a:hover , .dropdown-contentf a:hover , .dropdown-contenten a:hover {background-color: #ddd;}

@@ -2,10 +2,6 @@
   <HeaderVue />
 
   <section id="hero">
-    <!-- <h4>Trade-in-offer</h4> -->
-    <!-- <h2>Super value deals</h2>
-    <h1>On all products</h1>
-    <button>Shop Now</button> -->
   </section>
 
 
@@ -14,7 +10,7 @@
 
     <section id="banner" class="section-m1">
         <h4>Repair Services</h4>
-        <h2>Bienvenue sur <span>Bondi Theme</span> la boutique de vente et d'achat en ligne N°1 au Maroc !</h2>
+        <h2>Bienvenue sur <span>Rymo Theme</span> la boutique de vente et d'achat en ligne N°1 au Maroc !</h2>
         <button class="normal">Explore More</button>
     </section>
 
@@ -42,9 +38,9 @@
     </section>
 
     <section id="pagination" class="section-p1">
-      <a href="#product1" @click="getFirstPagi()">First</a>
+      <!-- <a href="#product1" @click="getFirstPagi()">First</a> -->
       <a href="#product1" v-for="page in totalPaginate()" :key="page" @click="getDataPaginate(page)">{{page}}</a>
-      <a href="#product1" @click="getLastPagi()">Last</a>
+      <!-- <a href="#product1" @click="getLastPagi()">Last</a> -->
     </section>
 
   <FooterVue />
@@ -153,34 +149,7 @@ a{
   text-decoration: none;
 }
 
-/* #hero h4 {
-  padding-bottom: 10px;
-  color: white;
-}
 
-#hero h2 {
-  color: white;
-  font-size: 50px;
-}
-
-
-#hero h1 {
-  color: #a9c52f;
-  font-size: 50px;
-}
-
-#hero button {
-  background-image: url("./../assets/img/button.png");
-  background-color: transparent;
-  color: #088178;
-  border: 0;
-  padding: 14px 80px 14px 65px;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 15px;
-} */
-/* ---------- */
 #boutique {
   width: 60%;
   margin: 20px auto;

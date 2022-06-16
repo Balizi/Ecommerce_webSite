@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-6 col-lg-4">
                     <div class="info mb-5">
-                        <img src="./../assets/img/logo.png" alt="" class="mb-4">
+                        <img src="./../assets/img/logo1.png" style="width: 100px;" alt="" class="mb-4">
                         <p class="mb-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, odio!</p>
                         <div class="copyright">
                             Created By <span>Graphberry</span>
@@ -94,6 +94,11 @@ export default {
     display: flex;
     justify-content: flex-start;
 
+}
+
+.contact .row img{
+    margin: auto;
+    margin-bottom: 5px;
 }
 
 /* End Footer */

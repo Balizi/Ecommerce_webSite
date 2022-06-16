@@ -22,9 +22,9 @@
   </section>
 
   <section id="pagination" class="section-p1" v-if="this.articles.length > 6">
-    <a href="#" @click="getFirstPagi()">First</a>
+    <!-- <a href="#" @click="getFirstPagi()">First</a> -->
     <a href="#" v-for="page in totalPaginate()" :key="page" @click.prevent="getDataPaginate(page)">{{page}}</a>
-    <a href="#" @click="getLastPagi()">Last</a>
+    <!-- <a href="#" @click="getLastPagi()">Last</a> -->
   </section>
   <FooterVue />
 </template>

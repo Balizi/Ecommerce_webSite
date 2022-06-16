@@ -73,7 +73,7 @@
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
-                            <h3>List des Produite</h3>
+                            <h3>List des Produite Femme</h3>
 
                             <!-- <button >Ajouter Produit <span class="las la-arrow-right"></span></button> -->
                         </div>
@@ -93,27 +93,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($res as $val):?>
+                                        <?php foreach($res as $value):?>
                                         <tr >
-                                            <td data-label="Id"><?= $val['titre']?></td>
-                                            <td data-label="Nom"><?= $val['categorie']?></td>
-                                            <td data-label="Prix"><?= $val['genre']?></td>
-                                            <td data-label="Catégorie"><?= $val['prix']." MAD";?></td>
-                                            <td data-label="Catégorie"><?= $val['description']?></td>
+                                            <td data-label="Id"><?= $value['titre']?></td>
+                                            <td data-label="Nom"><?= $value['categorie']?></td>
+                                            <td data-label="Prix"><?= $value['genre']?></td>
+                                            <td data-label="Catégorie"><?= $value['prix']." MAD";?></td>
+                                            <td data-label="Catégorie"><?= $value['description']?></td>
                                             <td data-label="Image">
-                                                <img src=<?= "public/img/femme/".$val['image']  ?> >
+                                                <img src=<?= "public/img/femme/".$value['image']  ?> >
                                             </td>
                                             <td class="fr">
                                                 <form action="update" method="post">
-                                                    <input type="hidden" name="idd" value="<?= $val['idArticle']?>" />
+                                                    <input type="hidden" name="idd" value="<?= $value['idArticle']?>" />
                                                     <span class="action_btn">
                                                         <button type="submit" name="id">Modifier</button>
                                                     </span>
                                                 </form>
                                                 <form action="deleteProduct" method="post">
-                                                    <input type="hidden" name="idd" value="<?= $val['idArticle']?>" />
+                                                    <input type="hidden" name="idd" value="<?= $value['idArticle']?>" />
                                                     <span class="action_btn"> 
                                                         <button type="submit" name="id">Supprimer</button>
+                                                    </span>
+                                                </form>
+                                                <form action="addImageDetails" method="post">
+                                                    <input type="hidden" name="idd" value="<?= $value['idArticle']?>" />
+                                                    <span class="action"> 
+                                                        <button type="submit" name="id">+</button>
                                                     </span>
                                                 </form>
                                             </td>

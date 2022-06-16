@@ -22,7 +22,7 @@
                         <td v-if="dt.genre == 'enfant'"><img :src="require(`../assets/img/product/enfant/${dt.image}`)" alt=""></td>
                         <td>{{dt.titre}}</td>
                         <td>{{dt.prix}} MAD</td>
-                        <td><input type="number" min="1" @change="totale()" name="" :value="dt.qte" id=""></td>
+                        <td><input type="number" min="1" name="" :value="dt.qte" id=""></td>
                         <td>{{dt.categorie}}</td>
                     </tr>
                 </tbody>

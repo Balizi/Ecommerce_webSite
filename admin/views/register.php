@@ -181,9 +181,6 @@
                     <span>Mot de passe *</span>
                     <input type="password" name="password" placeholder="Mot de passe" required>
                 </div>
-                <div class="remember">
-                    <label for="id"><input type="checkbox" name="" id="id">Remember me</label>
-                </div>
                 <div class="inputBx">
                     <input type="submit" name="submit" value="S’inscrire">
                 </div>

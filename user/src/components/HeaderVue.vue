@@ -117,7 +117,7 @@ export default {
     {
       localStorage.clear();
       this.$router.push({ name: "HomeVue" });
-      location.reload();
+      this.$store.state.nb=JSON.parse(localStorage.getItem("produite"));
     }
   },
 };

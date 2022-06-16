@@ -26,7 +26,7 @@
                 <li>
                     <a href="home">
                         <span class="las la-shopping-bag"></span>
-                        <span>List des Produit home</span>
+                        <span>List des Produit Home</span>
                     </a>
                 </li>
                 <li>

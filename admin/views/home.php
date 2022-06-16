@@ -74,7 +74,7 @@
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
-                            <h3>List des Produite</h3>
+                            <h3>List des Produite Home</h3>
                         </div>
                                        
                         <div class="card-body">
@@ -118,7 +118,7 @@
                                                 <form action="addImageDetails" method="post">
                                                     <input type="hidden" name="idd" value="<?= $val['idArticle']?>" />
                                                     <span class="action"> 
-                                                        <button type="submit" name="id">Add</button>
+                                                        <button type="submit" name="id">+</button>
                                                     </span>
                                                 </form>
                                             </td>

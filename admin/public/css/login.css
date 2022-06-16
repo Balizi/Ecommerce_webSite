@@ -77,14 +77,6 @@ section .contentBx .formBx .inputBx input[type="submit"]
 
 section .contentBx .formBx .inputBx input[type="submit"]:hover{background: #a9c52f;}
 
-section .contentBx .formBx .remember
-{
-    margin-bottom: 10px;
-    color: #607d8b;
-    font-weight: 400;
-    font-size: 14px;
-}
-
 section .contentBx .formBx .inputBx p{color: #0a0a0a;}
 
 section .contentBx .formBx .inputBx p a{color: #088178;}

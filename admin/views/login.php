@@ -8,7 +8,7 @@ if(isset($_POST['login']))
 
 if(isset($_SESSION['username']))
 {
-    header('location:home');
+    header('location:index');
 }
 
 ?>
@@ -179,14 +179,11 @@ if(isset($_SESSION['username']))
                     <span>Mot de passe *</span>
                     <input type="password" name="password" placeholder="Mot de passe" required>
                 </div>
-                <div class="remember">
-                    <label for="id"><input type="checkbox" name="" id="id">Remember me</label>
-                </div>
                 <div class="inputBx">
                     <input type="submit" name="login" value="Se Connecter">
                 </div>
                 <div class="inputBx">
-                    <p>Don't have an account?<a href="register">Sign up</a></p>
+                    <p><a href="register">Créer nouveau compte</a></p>
                 </div>
             </form>
         </div>

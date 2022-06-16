@@ -93,11 +93,11 @@
                                     <tbody>
                                         <?php foreach($res as $val):?>
                                             <tr>
-                                                <td data-label="Id"><?= $val['nom']?></td>
-                                                <td data-label="Nom"><?= $val['prenom']?></td>
-                                                <td data-label="Prix"><?= $val['email']?></td>
-                                                <td data-label="Catégorie"><?= $val['tele'];?></td>
-                                                <td data-label="Catégorie"><?= $val['genre']?></td>
+                                                <td data-label="Nom"><?= $val['nom']?></td>
+                                                <td data-label="Prenom"><?= $val['prenom']?></td>
+                                                <td data-label="Email"><?= $val['email']?></td>
+                                                <td data-label="Téléphone"><?= $val['tele'];?></td>
+                                                <td data-label="Genre"><?= $val['genre']?></td>
                                             </tr>
                                         <?php endforeach;?> 
                                     </tbody>
